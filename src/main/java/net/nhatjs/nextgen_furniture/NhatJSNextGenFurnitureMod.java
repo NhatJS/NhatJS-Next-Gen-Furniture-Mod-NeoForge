@@ -2,6 +2,7 @@ package net.nhatjs.nextgen_furniture;
 
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.item.ModCreativeModeTabs;
 import net.nhatjs.nextgen_furniture.item.ModItems;
 import org.slf4j.Logger;
 
@@ -57,6 +58,7 @@ public class NhatJSNextGenFurnitureMod {
         NeoForge.EVENT_BUS.register(this);
 
         ModBlocks.register(modEventBus);
+        ModCreativeModeTabs.REGISTRY.register(modEventBus);
         ModItems.register(modEventBus);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             NextGenClientInit.init(modEventBus);
@@ -75,13 +77,6 @@ public class NhatJSNextGenFurnitureMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            event.accept(ModBlocks.LAPTOP);
-            event.accept(ModBlocks.TABLE_2X1_BLACK);
-            event.accept(ModBlocks.TABLE_2X1_WHITE);
-            event.accept(ModBlocks.TABLE_3X1_BLACK);
-            event.accept(ModBlocks.TABLE_3X1_WHITE);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
