@@ -18,25 +18,12 @@ version = mod_version
 group = mod_group_id
 
 
-def getGprUser() {
-    return project.findProperty('gpr.user')
-}
-
-def getGprKey() {
-    return project.findProperty('gpr.key')
-}
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
-    if(getGprUser() && getGprKey()) {
-        maven {
-            name = "MrCrayfish (GitHub)"
-            url = "https://maven.pkg.github.com/MrCrayfish/Maven"
-            credentials {
-                username = getGprUser()
-                password = getGprKey()
-            }
-        }
+
+    maven {
+        url = "https://cursemaven.com"
     }
 }
 
@@ -133,7 +120,7 @@ configurations {
 dependencies {
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    implementation "com.mrcrayfish:framework-neoforge:${minecraft_version}-${framework_version}"
+    implementation "curse.maven:framework-549225:5680078"
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
     // compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
