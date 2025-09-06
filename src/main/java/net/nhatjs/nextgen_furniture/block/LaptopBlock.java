@@ -83,9 +83,12 @@ public class LaptopBlock extends Block {
             if (stage == 0) {
                 level.setBlock(pos, state.setValue(OPEN_TARGET, true), Block.UPDATE_ALL);
                 schedule(level, pos, 2);
-            } else if ((stage == 7 || stage == 8) && !screenOn) {
+                return InteractionResult.CONSUME;
+            }if (stage == 7 || stage == 8) {
+                if (screenOn) return InteractionResult.CONSUME;
                 level.setBlock(pos, state.setValue(OPEN_TARGET, false), Block.UPDATE_ALL);
                 schedule(level, pos, 2);
+                return InteractionResult.CONSUME;
             }
             return InteractionResult.CONSUME;
         }
@@ -98,7 +101,7 @@ public class LaptopBlock extends Block {
         }
         if (stage == 8) {
             if (screenOn) {
-                level.setBlock(pos, state.setValue(SCREEN_ON, false).setValue(BOOT_STAGE, 0), Block.UPDATE_ALL);
+                level.setBlock(pos, state.setValue(SCREEN_ON, false).setValue(BOOT_STAGE, 0).setValue(OPEN_STAGE, 7), Block.UPDATE_ALL);
             } else {
                 level.setBlock(pos, state.setValue(BOOT_STAGE, 0), Block.UPDATE_ALL);
                 schedule(level, pos, 10);
