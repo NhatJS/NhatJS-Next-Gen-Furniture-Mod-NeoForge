@@ -1,7 +1,10 @@
 package net.nhatjs.nextgen_furniture;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.entity.ModEntities;
+import net.nhatjs.nextgen_furniture.entity.client.renderer.ChairRenderer;
 import net.nhatjs.nextgen_furniture.item.ModCreativeModeTabs;
 import net.nhatjs.nextgen_furniture.item.ModItems;
 import org.slf4j.Logger;
@@ -58,6 +61,7 @@ public class NhatJSNextGenFurnitureMod {
         NeoForge.EVENT_BUS.register(this);
 
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
         ModCreativeModeTabs.REGISTRY.register(modEventBus);
         ModItems.register(modEventBus);
         if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -89,7 +93,6 @@ public class NhatJSNextGenFurnitureMod {
     static class ClientModEvents {
         @SubscribeEvent
         static void onClientSetup(FMLClientSetupEvent event) {
-
         }
     }
 }

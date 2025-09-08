@@ -1,25 +1,30 @@
+# **📌 NhatJS's NGMC Project Beta (NeoForge 1.21-1.21.1):**
 
-Installation information
-=======
+## 🚀 NeoForge Supported Loaders
+- **Minecraft**: 1.21, 1.21.1
+- **Shaders & Emissive Textures works**: Iris Shader, Sodium, Continuity, Forgified Fabric API & Sinytra Connector
+- **Dependency**: [MrCrayfish’s Framework API](https://www.curseforge.com/minecraft/mc-mods/framework)
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+    - Game **1.21** → Framework **1.21**
+    - Game **1.21.1** → Framework **1.21.1**
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## 📦 Installation:
+1. Download the correct **[NeoForge loader](https://neoforged.net/)** for your Minecraft version.
+2. **Must** download **many supported loaders (see above: NeoForge Supported Loaders)** matching your game version.
+3. Place all **of them** `.jar` files into your `mods/` folder.
+4. Launch Minecraft and enjoy....well first version of NGMC Project! ✨.
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+## 📖 License
+- **NGMC Project Beta** © NhatJS.
+- Depends on **MrCrayfish’s Framework**, licensed under **GNU Lesser General Public License (LGPL)**.
+- Free to use in modpacks. Please don’t re-upload outside CurseForge/Modrinth/GitHub.
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+## 📜 Rules:
+- ✅ **Modpacks/addons allowed:** (potentially, not official yet)
+  You may include this mod in any modpack/addons hosted on CurseForge or Modrinth.
+- ❌ **No unauthorized re-upload:**
+  You are not allowed to upload the mod JAR to other sites (9minecraft, mcbbs, etc.) without explicit permission.
+  Sharing the official CurseForge/Modrinth/GitHub link is always allowed.
+- ❌ **No false ownership:**
+  Do not claim this mod, its ideas, or its assets as your own work.
+  Always credit “NhatJS” as the author.

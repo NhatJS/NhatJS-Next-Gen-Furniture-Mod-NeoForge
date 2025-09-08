@@ -1,12 +1,8 @@
 package net.nhatjs.nextgen_furniture.block;
 
-import com.mrcrayfish.framework.api.registry.RegistryContainer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
@@ -17,17 +13,28 @@ import net.nhatjs.nextgen_furniture.item.ModItems;
 
 import java.util.function.Supplier;
 
-@RegistryContainer
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(NhatJSNextGenFurnitureMod.MOD_ID);
 
+    public static final DeferredBlock<Block> CHAIR_WHITE = registerBlock("chair_white",
+            () -> new ChairBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> CHAIR_WOOD_OAK = registerBlock("chair_wood_oak",
+            () -> new ChairBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> LAPTOP = registerBlock("laptop",
             () -> new LaptopBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_2X1_BLACK = registerBlock("table_2x1_black",
-            () -> new Table2x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+            () -> new Table2x1CenterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_2X1_BLACK_ALT = registerBlock("table_2x1_black_alt",
+            () -> new Table2x1LeftBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_2X1_BLACK_ALT_2 = registerBlock("table_2x1_black_alt_2",
+            () -> new Table2x1RightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_2X1_WHITE = registerBlock("table_2x1_white",
-            () -> new Table2x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+            () -> new Table2x1CenterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_2X1_WHITE_ALT = registerBlock("table_2x1_white_alt",
+            () -> new Table2x1LeftBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_2X1_WHITE_ALT_2 = registerBlock("table_2x1_white_alt_2",
+            () -> new Table2x1RightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_3X1_BLACK = registerBlock("table_3x1_black",
             () -> new Table3x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_3X1_WHITE = registerBlock("table_3x1_white",

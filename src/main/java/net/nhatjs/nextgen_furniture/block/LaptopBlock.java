@@ -78,7 +78,6 @@ public class LaptopBlock extends Block {
         int stage = state.getValue(OPEN_STAGE);
         boolean screenOn = state.getValue(SCREEN_ON);
 
-        // Sneak: mở/đóng nắp
         if (player.isShiftKeyDown()) {
             if (stage == 0) {
                 level.setBlock(pos, state.setValue(OPEN_TARGET, true), Block.UPDATE_ALL);
@@ -93,7 +92,6 @@ public class LaptopBlock extends Block {
             return InteractionResult.CONSUME;
         }
 
-        // Đứng: boot / toggle màn hình
         if (stage == 7) {
             level.setBlock(pos, state.setValue(OPEN_STAGE, 8).setValue(BOOT_STAGE, 0).setValue(SCREEN_ON, false), Block.UPDATE_ALL);
             schedule(level, pos, 10);
@@ -112,7 +110,6 @@ public class LaptopBlock extends Block {
         return InteractionResult.CONSUME;
     }
 
-    // --- TICK ANIMATION ---
     private static void schedule(Level level, BlockPos pos, int delay) {
         if (level instanceof ServerLevel sl) {
             sl.scheduleTick(pos, sl.getBlockState(pos).getBlock(), delay);
@@ -124,7 +121,6 @@ public class LaptopBlock extends Block {
         int stage = state.getValue(OPEN_STAGE);
         boolean wantOpen = state.getValue(OPEN_TARGET);
 
-        // Animate mở/đóng nắp (0..7)
         if ((wantOpen && stage < 7) || (!wantOpen && stage > 0)) {
             int next = wantOpen ? stage + 1 : stage - 1;
             level.setBlock(pos, state.setValue(OPEN_STAGE, next), Block.UPDATE_ALL);
@@ -132,7 +128,6 @@ public class LaptopBlock extends Block {
             return;
         }
 
-        // Boot khi open_stage=8 và màn hình đang OFF
         if (stage == 8 && !state.getValue(SCREEN_ON)) {
             int boot = state.getValue(BOOT_STAGE);
             if (boot < 5) {
