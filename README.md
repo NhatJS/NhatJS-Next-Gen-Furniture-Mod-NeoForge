@@ -1,5 +1,7 @@
 # **📌 NhatJS's NGMC Project Beta (NeoForge 1.21-1.21.1):**
 
+- Check out another source codes for [Forge](https://github.com/NhatJS/NhatJS-Next-Gen-Furniture-Mod-Forge) or [Fabric/QuiltMC](https://github.com/NhatJS/NhatJS-Next-Gen-Furniture-Mod-Fabric)
+
 ## 🚀 NeoForge Supported Loaders
 - **Minecraft**: 1.21, 1.21.1
 - **Shaders & Emissive Textures works**: Iris Shader, Sodium, Continuity, Forgified Fabric API & Sinytra Connector
