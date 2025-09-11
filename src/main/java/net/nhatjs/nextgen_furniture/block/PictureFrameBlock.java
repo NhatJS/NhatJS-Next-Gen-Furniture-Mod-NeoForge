@@ -34,7 +34,7 @@ public class PictureFrameBlock extends Block {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, ctx.getNearestLookingDirection().getOpposite());
     }
 
     @Override
