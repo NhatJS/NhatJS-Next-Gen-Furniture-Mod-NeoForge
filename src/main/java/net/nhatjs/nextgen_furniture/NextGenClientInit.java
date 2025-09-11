@@ -33,7 +33,6 @@ public class NextGenClientInit {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAPTOP.get(), RenderType.CUTOUT_MIPPED);
 
 
-            EntityRenderers.register(ModEntities.CHAIR.get(), ChairRenderer::new);
         });
     }
 }
