@@ -14,7 +14,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> NEXTGEN_FURNITURE_ITEMS_GROUP = REGISTRY.register("nextgen_furniture_tab",
             () -> CreativeModeTab.builder().title(Component.translatable("item_group.nextgen_furniture.nextgen_furniture_tab"))
-                    .icon(() -> new ItemStack(ModBlocks.LAPTOP.get()))
+                    .icon(() -> new ItemStack(ModItems.NEXTGEN_FURNITURE_LOGO.get()))
                     .displayItems((parameters, tabData) -> {
                         tabData.accept(ModBlocks.CHAIR_WHITE.get().asItem());
                         tabData.accept(ModBlocks.CHAIR_WOOD_OAK.get().asItem());
@@ -22,6 +22,9 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.TABLE_2X1_WHITE.get().asItem());
                         tabData.accept(ModBlocks.TABLE_3X1_BLACK.get().asItem());
                         tabData.accept(ModBlocks.TABLE_3X1_WHITE.get().asItem());
+                        tabData.accept(ModBlocks.TABLE_DINING_WHITE.get().asItem());
+                        tabData.accept(ModBlocks.TABLE_DINING_WOOD_OAK.get().asItem());
+                        tabData.accept(ModBlocks.PICTURE_FRAME.get().asItem());
                         tabData.accept(ModBlocks.LAPTOP.get().asItem());
                     }).build());
 }

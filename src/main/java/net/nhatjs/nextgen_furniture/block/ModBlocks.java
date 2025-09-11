@@ -21,8 +21,6 @@ public class ModBlocks {
             () -> new ChairBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> CHAIR_WOOD_OAK = registerBlock("chair_wood_oak",
             () -> new ChairBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
-    public static final DeferredBlock<Block> LAPTOP = registerBlock("laptop",
-            () -> new LaptopBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_2X1_BLACK = registerBlock("table_2x1_black",
             () -> new Table2x1CenterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_2X1_BLACK_ALT = registerBlock("table_2x1_black_alt",
@@ -39,6 +37,14 @@ public class ModBlocks {
             () -> new Table3x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_3X1_WHITE = registerBlock("table_3x1_white",
             () -> new Table3x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_DINING_WHITE = registerBlock("table_dining_white",
+            () -> new DiningTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TABLE_DINING_WOOD_OAK = registerBlock("table_dining_wood_oak",
+            () -> new DiningTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> PICTURE_FRAME = registerBlock("picture_frame",
+            () -> new PictureFrameBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.2F).noOcclusion()));
+    public static final DeferredBlock<Block> LAPTOP = registerBlock("laptop",
+            () -> new LaptopBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
