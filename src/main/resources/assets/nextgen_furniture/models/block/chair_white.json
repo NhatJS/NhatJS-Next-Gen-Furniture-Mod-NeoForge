@@ -1,11 +1,10 @@
 {
 	"credit": "Made with Blockbench",
-	"loader": "framework:open_model",
 	"textures": {
 		"particle": "minecraft:block/white_concrete",
 		"furniture": "nextgen_furniture:block/furniture"
 	},
-	"components": [
+	"elements": [
 		{
 			"from": [3.4625, 10.38467, 11.7321],
 			"to": [12.5375, 10.65967, 11.7321],

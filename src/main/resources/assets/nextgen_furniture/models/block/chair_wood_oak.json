@@ -1,12 +1,11 @@
 {
 	"credit": "Made with Blockbench",
-	"loader": "framework:open_model",
 	"textures": {
 		"particle": "nextgen_furniture:block/oak_wood",
 		"furniture": "nextgen_furniture:block/furniture",
 		"oak_wood": "nextgen_furniture:block/oak_wood"
 	},
-	"components": [
+	"elements": [
 		{
 			"from": [3.4625, 10.38467, 11.7321],
 			"to": [12.5375, 10.65967, 11.7321],
