@@ -5,7 +5,6 @@
 ## 🚀 NeoForge Supported Loaders
 - **Minecraft**: 1.21.6, 1.21.7, 1.21.8
 - **Shaders & Emissive Textures works**: Iris Shader, Sodium, **Fusion** (new required to work for emissive textures)
-- **Dependency**: [MrCrayfish’s Framework API](https://www.curseforge.com/minecraft/mc-mods/framework)
 
 ## 📦 Installation:
 1. Download the correct **[NeoForge loader](https://neoforged.net/)** for your Minecraft version.
