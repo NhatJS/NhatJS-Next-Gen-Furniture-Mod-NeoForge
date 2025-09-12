@@ -21,7 +21,7 @@ public class ModEntities {
 
     public static final Supplier<EntityType<ChairBlockEntity>> CHAIR =
             ENTITY_TYPES.register("chair_entity", () -> EntityType.Builder.of(ChairBlockEntity::new, MobCategory.MISC)
-                    .sized(0.5f, 0.5f).build(CHAIR_KEY));
+                    .sized(0.5f, 0.7f).build(CHAIR_KEY));
 
 
     public static void register(IEventBus eventBus) {
