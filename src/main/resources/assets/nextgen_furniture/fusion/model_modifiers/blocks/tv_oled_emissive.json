@@ -1,0 +1,6 @@
+{
+  "targets": [
+    "nextgen_furniture:tv_oled"
+  ],
+  "show_breaking_overlay": false
+}
