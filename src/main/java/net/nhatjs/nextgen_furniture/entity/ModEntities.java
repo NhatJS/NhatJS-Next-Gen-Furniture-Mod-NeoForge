@@ -16,7 +16,11 @@ public class ModEntities {
 
     public static final Supplier<EntityType<ChairBlockEntity>> CHAIR =
             ENTITY_TYPES.register("chair_entity", () -> EntityType.Builder.of(ChairBlockEntity::new, MobCategory.MISC)
-                    .sized(0.5f, 0.5f).build("chair_entity"));
+                    .sized(0.5f, 0.7f).build("chair_entity"));
+
+    public static final Supplier<EntityType<ChairBlockEntity>> SOFA =
+            ENTITY_TYPES.register("sofa_entity", () -> EntityType.Builder.of(ChairBlockEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 0.55f).build("sofa_entity"));
 
 
     public static void register(IEventBus eventBus) {

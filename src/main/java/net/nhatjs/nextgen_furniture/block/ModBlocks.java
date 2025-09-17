@@ -37,14 +37,28 @@ public class ModBlocks {
             () -> new Table3x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_3X1_WHITE = registerBlock("table_3x1_white",
             () -> new Table3x1Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> COFFEE_TABLE_WHITE = registerBlock("coffee_table_white",
+            () -> new CoffeeTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_DINING_WHITE = registerBlock("table_dining_white",
             () -> new DiningTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> TABLE_DINING_WOOD_OAK = registerBlock("table_dining_wood_oak",
             () -> new DiningTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TV_STAND_WOOD_OAK = registerBlock("tv_stand_wood_oak",
+            () -> new TVStandBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> PICTURE_FRAME = registerBlock("picture_frame",
             () -> new PictureFrameBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.2F).noOcclusion()));
+    public static final DeferredBlock<Block> TRASH_CAN_BLACK = registerBlock("trash_can_black",
+            () -> new TrashCanBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.2F).noOcclusion()));
+    public static final DeferredBlock<Block> TRASH_CAN_WHITE = registerBlock("trash_can_white",
+            () -> new TrashCanBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.2F).noOcclusion()));
+    public static final DeferredBlock<Block> SOFA = registerBlock("sofa",
+            () -> new SofaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> FLOOR_LAMP = registerBlock("floor_lamp",
+            () -> new FloorLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
     public static final DeferredBlock<Block> LAPTOP = registerBlock("laptop",
             () -> new LaptopBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> TV_OLED = registerBlock("tv_oled",
+            () -> new TVBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0F).noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
