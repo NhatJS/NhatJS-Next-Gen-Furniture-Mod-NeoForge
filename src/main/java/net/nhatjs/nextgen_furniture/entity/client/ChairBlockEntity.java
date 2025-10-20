@@ -37,7 +37,9 @@ public class ChairBlockEntity extends Entity {
     @Override
     protected void removePassenger(Entity passenger) {
         super.removePassenger(passenger);
-        this.kill(((ServerLevel) this.level()));
+        if(!level().isClientSide()) {
+            this.kill(((ServerLevel) this.level()));
+        }
     }
 
     @Override
