@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "1  ",
-    "111",
-    "1 1"
+    "2  ",
+    "211",
+    "2 2"
   ],
   "key": {
     "1": {
       "item": "minecraft:white_concrete"
+    },
+    "2": {
+      "item": "minecraft:stick"
     }
   },
   "result": {

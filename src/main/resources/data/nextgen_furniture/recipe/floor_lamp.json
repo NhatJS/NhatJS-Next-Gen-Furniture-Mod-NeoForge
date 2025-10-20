@@ -4,7 +4,7 @@
   "pattern": [
     " 2 ",
     " 1 ",
-    "111"
+    "3 3"
   ],
   "key": {
     "1": {
@@ -12,6 +12,9 @@
     },
     "2": {
       "item": "minecraft:redstone_lamp"
+    },
+    "3": {
+      "item": "minecraft:stick"
     }
   },
   "result": {

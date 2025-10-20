@@ -30,7 +30,6 @@ public class DiningTableBlock extends Block {
             Block.box(29, 0, 0.75, 30.5, 13.75, 1.65)
     );
 
-
     private static final VoxelShape VERTICAL = Shapes.or(
             Block.box(0, 13.75, -16, 16, 16, 32),
             Block.box(1.65, 0.1, 29.1, 14.35, 0.75, 30.4),

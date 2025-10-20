@@ -1,5 +1,7 @@
 package net.nhatjs.nextgen_furniture.block;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -9,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +32,31 @@ import java.util.List;
 public class SofaBlock extends Block {
     public static final DirectionProperty DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<Part> PART = EnumProperty.create("part", Part.class);
+
+    private static final MapCodec<SofaBlock> CODEC = RecordCodecBuilder.mapCodec(builder -> {
+        return builder.group(DyeColor.CODEC.fieldOf("color").forGetter(block -> {
+            return block.color;
+        }), propertiesCodec()).apply(builder, SofaBlock::new);
+    });
+
+    private final DyeColor color;
+
+    public SofaBlock(DyeColor color, Properties settings)
+    {
+        super(settings);
+        this.color = color;
+    }
+
+    public DyeColor getColor()
+    {
+        return this.color;
+    }
+
+    @Override
+    protected MapCodec<SofaBlock> codec()
+    {
+        return CODEC;
+    }
 
     public enum Part implements StringRepresentable
     {
@@ -58,11 +86,6 @@ public class SofaBlock extends Block {
         return switch (state.getValue(DIRECTION)) {
             default -> Block.box(0, 1, 0, 16, 7.525, 16);
         };
-    }
-
-    public SofaBlock(Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH).setValue(PART, Part.SINGLE));
     }
 
     @Override
