@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -22,7 +21,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TVBlock extends Block {
-    public static final DirectionProperty DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty TV_ON = BooleanProperty.create("tv_on");
     public static final EnumProperty<Mount> MOUNT = EnumProperty.create("mount", Mount.class);
 
@@ -85,7 +84,7 @@ public class TVBlock extends Block {
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         Direction face = ctx.getClickedFace();
         if (face.getAxis().isHorizontal()) {
-            BlockPos back = ctx.getClickedPos().offset(face.getOpposite().getNormal());
+            BlockPos back = ctx.getClickedPos().offset(face.getOpposite().getUnitVec3i());
             if (hasSupport(ctx.getLevel(), back, face)) {
                 return defaultBlockState()
                         .setValue(DIRECTION, face)

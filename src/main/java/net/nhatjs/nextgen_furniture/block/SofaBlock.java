@@ -9,7 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -30,7 +29,7 @@ import net.nhatjs.nextgen_furniture.entity.client.ChairBlockEntity;
 import java.util.List;
 
 public class SofaBlock extends Block {
-    public static final DirectionProperty DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<Part> PART = EnumProperty.create("part", Part.class);
 
     private static final MapCodec<SofaBlock> CODEC = RecordCodecBuilder.mapCodec(builder -> {
@@ -105,7 +104,7 @@ public class SofaBlock extends Block {
         return null;
     }
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState newState, LevelAccessor reader, BlockPos pos, BlockPos newPos)
+    protected BlockState updateShape(BlockState state, LevelReader reader, ScheduledTickAccess access, BlockPos pos, Direction direction, BlockPos pos1, BlockState state1, RandomSource rand)
     {
         return state.setValue(PART, this.getShape(state, reader, pos));
     }
@@ -166,7 +165,7 @@ public class SofaBlock extends Block {
             Entity entity = null;
             List<ChairBlockEntity> entities = level.getEntities(ModEntities.SOFA.get(), new AABB(pos), sofa -> true);
             if(entities.isEmpty()) {
-                entity = ModEntities.SOFA.get().spawn(((ServerLevel) level), pos, MobSpawnType.TRIGGERED);
+                entity = ModEntities.SOFA.get().spawn(((ServerLevel) level), pos, EntitySpawnReason.TRIGGERED);
             } else {
                 entity = entities.get(0);
             }
