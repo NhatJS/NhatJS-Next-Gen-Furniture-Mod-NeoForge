@@ -54,7 +54,7 @@ public class FloorLampBlock extends Block {
 
     @Override
     public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             boolean current = state.getValue(LIT);
             level.setBlock(pos, state.setValue(LIT, !current), 3);
         }

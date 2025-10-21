@@ -46,7 +46,7 @@ public class ChairBlockEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide)
+        if (!this.level().isClientSide())
         {
             BlockPos pos = this.blockPosition();
             if (this.getPassengers().isEmpty() || this.level().isEmptyBlock(pos)) {
@@ -58,7 +58,7 @@ public class ChairBlockEntity extends Entity {
 
     @Override
     public void remove(RemovalReason reason) {
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             if (this.isVehicle()) this.getPassengers().forEach(p -> p.stopRiding());
             this.ejectPassengers();
         }

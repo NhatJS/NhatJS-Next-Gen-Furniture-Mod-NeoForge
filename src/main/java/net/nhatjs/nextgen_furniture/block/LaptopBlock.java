@@ -63,7 +63,7 @@ public class LaptopBlock extends Block {
     }
 
     private InteractionResult handleUse(BlockState state, Level level, BlockPos pos, Player player) {
-        if (level.isClientSide) return InteractionResult.SUCCESS;
+        if (level.isClientSide()) return InteractionResult.SUCCESS;
 
         int stage = state.getValue(OPEN_STAGE);
         boolean screenOn = state.getValue(SCREEN_ON);

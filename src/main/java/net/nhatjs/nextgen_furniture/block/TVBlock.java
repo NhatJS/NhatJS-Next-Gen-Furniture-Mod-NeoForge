@@ -106,7 +106,7 @@ public class TVBlock extends Block {
 
     @Override
     public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             boolean next = !state.getValue(TV_ON);
             level.setBlock(pos, state.setValue(TV_ON, next), Block.UPDATE_ALL);
         }
