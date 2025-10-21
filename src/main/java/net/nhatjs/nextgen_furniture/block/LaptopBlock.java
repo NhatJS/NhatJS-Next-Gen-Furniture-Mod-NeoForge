@@ -24,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class LaptopBlock extends Block {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final IntegerProperty OPEN_STAGE = IntegerProperty.create("open_stage", 0, 6);
+    public static final IntegerProperty OPEN_STAGE = IntegerProperty.create("open_stage", 0, 8);
     public static final BooleanProperty OPEN_TARGET = BooleanProperty.create("open_target");
     public static final IntegerProperty BOOT_STAGE = IntegerProperty.create("boot_stage", 0, 5);
     public static final BooleanProperty SCREEN_ON = BooleanProperty.create("screen_on");
@@ -73,7 +73,7 @@ public class LaptopBlock extends Block {
                 level.setBlock(pos, state.setValue(OPEN_TARGET, true), Block.UPDATE_ALL);
                 schedule(level, pos, 2);
                 return InteractionResult.CONSUME;
-            }if (stage == 5 || stage == 6) {
+            }if (stage == 7 || stage == 8) {
                 if (screenOn) return InteractionResult.CONSUME;
                 level.setBlock(pos, state.setValue(OPEN_TARGET, false), Block.UPDATE_ALL);
                 schedule(level, pos, 2);
@@ -82,14 +82,14 @@ public class LaptopBlock extends Block {
             return InteractionResult.CONSUME;
         }
 
-        if (stage == 5) {
-            level.setBlock(pos, state.setValue(OPEN_STAGE, 6).setValue(BOOT_STAGE, 0).setValue(SCREEN_ON, false), Block.UPDATE_ALL);
+        if (stage == 7) {
+            level.setBlock(pos, state.setValue(OPEN_STAGE, 8).setValue(BOOT_STAGE, 0).setValue(SCREEN_ON, false), Block.UPDATE_ALL);
             schedule(level, pos, 10);
             return InteractionResult.CONSUME;
         }
-        if (stage == 6) {
+        if (stage == 8) {
             if (screenOn) {
-                level.setBlock(pos, state.setValue(SCREEN_ON, false).setValue(BOOT_STAGE, 0).setValue(OPEN_STAGE, 5), Block.UPDATE_ALL);
+                level.setBlock(pos, state.setValue(SCREEN_ON, false).setValue(BOOT_STAGE, 0).setValue(OPEN_STAGE, 7), Block.UPDATE_ALL);
             } else {
                 level.setBlock(pos, state.setValue(BOOT_STAGE, 0), Block.UPDATE_ALL);
                 schedule(level, pos, 10);
@@ -111,14 +111,14 @@ public class LaptopBlock extends Block {
         int stage = state.getValue(OPEN_STAGE);
         boolean wantOpen = state.getValue(OPEN_TARGET);
 
-        if ((wantOpen && stage < 5) || (!wantOpen && stage > 0)) {
+        if ((wantOpen && stage < 7) || (!wantOpen && stage > 0)) {
             int next = wantOpen ? stage + 1 : stage - 1;
             level.setBlock(pos, state.setValue(OPEN_STAGE, next), Block.UPDATE_ALL);
-            schedule(level, pos, 2);
+            schedule(level, pos, 1);
             return;
         }
 
-        if (stage == 6 && !state.getValue(SCREEN_ON)) {
+        if (stage == 8 && !state.getValue(SCREEN_ON)) {
             int boot = state.getValue(BOOT_STAGE);
             if (boot < 5) {
                 level.setBlock(pos, state.setValue(BOOT_STAGE, boot + 1), Block.UPDATE_ALL);
