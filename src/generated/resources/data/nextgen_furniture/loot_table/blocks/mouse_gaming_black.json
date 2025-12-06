@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nextgen_furniture:mouse_gaming_black"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "nextgen_furniture:blocks/mouse_gaming_black"
+}

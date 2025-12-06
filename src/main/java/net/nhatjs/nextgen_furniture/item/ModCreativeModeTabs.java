@@ -42,7 +42,12 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.SOFA_WHITE.get().asItem());
                         tabData.accept(ModBlocks.FLOOR_LAMP.get().asItem());
                         tabData.accept(ModBlocks.FLOOR_LAMP_B.get().asItem());
+                        tabData.accept(ModBlocks.MONITOR.get().asItem());
+                        tabData.accept(ModBlocks.MONITOR_GAMING_MINIMALIST.get().asItem());
+                        tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK.get().asItem());
+                        tabData.accept(ModBlocks.MOUSE_GAMING_BLACK.get().asItem());
                         tabData.accept(ModBlocks.LAPTOP.get().asItem());
                         tabData.accept(ModBlocks.TV_OLED.get().asItem());
+                        tabData.accept(ModBlocks.GAME_CONSOLE.get().asItem());
                     }).build());
 }
