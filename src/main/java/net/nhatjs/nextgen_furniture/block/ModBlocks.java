@@ -83,6 +83,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BED_WHITE_WOOD_BIRCH = registerBlock("bed_white_wood_birch",
             (properties) -> new BedWoodBlock(properties.strength(1.0F).noOcclusion()));
 
+    public static final DeferredBlock<Block> MONITOR = registerBlock("monitor",
+            (properties) -> new MonitorBlock(properties.strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> MONITOR_GAMING_MINIMALIST = registerBlock("monitor_gaming_minimalist",
+            (properties) -> new MonitorTypesBlock(properties.strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> MOUSE_GAMING_BLACK = registerBlock("mouse_gaming_black",
+            (properties) -> new ComputerMouseBlock(properties.strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> KEYBOARD_MECHANICAL_BLACK = registerBlock("keyboard_mechanical_black",
+            (properties) -> new KeyboardBlock(properties.strength(1.0F).noOcclusion()));
+    public static final DeferredBlock<Block> GAME_CONSOLE = registerBlock("game_console",
+            (properties) -> new ConsoleBlock(properties.strength(1.0F).noOcclusion()));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
         registerBlockItem(name, toReturn);

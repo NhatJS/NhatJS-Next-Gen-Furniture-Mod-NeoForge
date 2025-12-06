@@ -1,7 +1,10 @@
 package net.nhatjs.nextgen_furniture;
 
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.client.model.standalone.SimpleUnbakedStandaloneModel;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.blockentity.ModBlockEntities;
 import net.nhatjs.nextgen_furniture.entity.ModEntities;
 import net.nhatjs.nextgen_furniture.item.ModCreativeModeTabs;
 import net.nhatjs.nextgen_furniture.item.ModItems;
@@ -42,6 +45,7 @@ public class NhatJSNextGenFurnitureMod {
 
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModCreativeModeTabs.REGISTRY.register(modEventBus);
         ModItems.register(modEventBus);
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
@@ -50,6 +54,10 @@ public class NhatJSNextGenFurnitureMod {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener((ModelEvent.RegisterStandalone e) -> {
+            e.register(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ID,  SimpleUnbakedStandaloneModel.blockStateModel(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN));
+            e.register(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON_ID,  SimpleUnbakedStandaloneModel.blockStateModel(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON));
+        });
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

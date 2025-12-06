@@ -1,19 +1,31 @@
 package net.nhatjs.nextgen_furniture;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.model.BlockStateModel;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.model.standalone.StandaloneModelKey;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.blockentity.ModBlockEntities;
+import net.nhatjs.nextgen_furniture.blockentity.renderer.LaptopRenderer;
 import net.nhatjs.nextgen_furniture.entity.ModEntities;
-import net.nhatjs.nextgen_furniture.entity.client.renderer.ChairRenderer;
+import net.nhatjs.nextgen_furniture.entity.renderer.ChairRenderer;
 
 public class NhatJSNextGenFurnitureModClient {
     public static void init(IEventBus eventBus) {
         eventBus.addListener(NhatJSNextGenFurnitureModClient::onClientSetup);
     }
+    public static final ResourceLocation LAPTOP_SCREEN = ResourceLocation.fromNamespaceAndPath(
+            NhatJSNextGenFurnitureMod.MOD_ID, "block/laptop_screen_off");
+    public static final ResourceLocation LAPTOP_SCREEN_ON = ResourceLocation.fromNamespaceAndPath(
+            NhatJSNextGenFurnitureMod.MOD_ID, "block/laptop_screen_on");
+
+    public static final StandaloneModelKey<BlockStateModel> LAPTOP_SCREEN_ID = new StandaloneModelKey<BlockStateModel>(LAPTOP_SCREEN::getPath);
+    public static final StandaloneModelKey<BlockStateModel> LAPTOP_SCREEN_ON_ID = new StandaloneModelKey<BlockStateModel>(LAPTOP_SCREEN_ON::getPath);
 
     private static void onClientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
@@ -53,6 +65,13 @@ public class NhatJSNextGenFurnitureModClient {
 
             EntityRenderers.register(ModEntities.CHAIR.get(), ChairRenderer::new);
             EntityRenderers.register(ModEntities.SOFA.get(), ChairRenderer::new);
+
+            BlockEntityRenderers.register(ModBlockEntities.LAPTOP.get(), LaptopRenderer::new);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_GAMING_MINIMALIST.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOUSE_GAMING_BLACK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.KEYBOARD_MECHANICAL_BLACK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GAME_CONSOLE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
         });
     }
 }
