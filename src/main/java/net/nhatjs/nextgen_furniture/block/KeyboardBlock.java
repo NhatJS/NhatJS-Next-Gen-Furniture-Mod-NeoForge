@@ -24,10 +24,10 @@ public class KeyboardBlock extends Block {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
-            default -> Block.box(5.15, 0.025, 3.025, 14.45, 0.75, 6.5);
-            case SOUTH -> Block.box(1.55, 0.025, 9.5, 10.85, 0.75, 12.975);
-            case EAST -> Block.box(9.5, 0.025, 5.15, 12.975, 0.75, 14.45);
-            case WEST -> Block.box(3.025, 0.025, 1.55, 6.5, 0.75, 10.85);
+            default -> Block.box(3.35, 0, 6.25, 12.65, 0.7, 9.75);
+            case SOUTH -> Block.box(3.35, 0, 6.25, 12.65, 0.7, 9.75);
+            case EAST -> Block.box(6.25, 0, 3.35, 9.75, 0.7, 12.65);
+            case WEST -> Block.box(6.25, 0, 3.35, 9.75, 0.7, 12.65);
         };
     }
 
