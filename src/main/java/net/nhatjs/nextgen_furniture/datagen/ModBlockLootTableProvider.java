@@ -55,6 +55,25 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MOUSE_GAMING_BLACK.get());
         dropSelf(ModBlocks.KEYBOARD_MECHANICAL_BLACK.get());
         dropSelf(ModBlocks.GAME_CONSOLE.get());
+
+        dropSelf(ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_OAK.get());
+        dropSelf(ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.WARDROBE_MODERN_WOOD_OAK_LEFT.get());
+        dropSelf(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_LEFT.get());
+        dropSelf(ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT.get());
+        dropSelf(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_RIGHT.get());
+        dropSelf(ModBlocks.CHAIR_2_WHITE_GRAY.get());
+        dropSelf(ModBlocks.CHAIR_2_WHITE_WHITE.get());
+        dropSelf(ModBlocks.CHAIR_2_WOOD_OAK_GRAY.get());
+        dropSelf(ModBlocks.CHAIR_2_WOOD_OAK_WHITE.get());
+        dropSelf(ModBlocks.CHAIR_2_WOOD_BIRCH_GRAY.get());
+        dropSelf(ModBlocks.CHAIR_2_WOOD_BIRCH_WHITE.get());
+        dropSelf(ModBlocks.PC_GAMING.get());
+        dropSelf(ModBlocks.COMPUTER_CASE_GAMING.get());
+        dropSelf(ModBlocks.COMPUTER_POWER_SUPPLY.get());
+        dropSelf(ModBlocks.MAINBOARD_GAMING.get());
+        dropSelf(ModBlocks.GRAPHICS_CARD_GAMING.get());
+        dropSelf(ModBlocks.AIO_COOLER_3_FANS.get());
     }
 
     @Override

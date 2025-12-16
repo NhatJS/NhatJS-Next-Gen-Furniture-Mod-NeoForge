@@ -13,6 +13,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> NEXTGEN_FURNITURE_LOGO = ITEMS.registerItem("nextgen_furniture_logo",
             Item::new, new Item.Properties());
+    public static final DeferredItem<Item> COMPUTER_FAN_BLADE_WHITE = ITEMS.registerItem("computer_fan_blade_white",
+            Item::new, new Item.Properties());
+    public static final DeferredItem<Item> COMPUTER_RAM_GAMING = ITEMS.registerItem("computer_ram_gaming",
+            Item::new, new Item.Properties());
+    public static final DeferredItem<Item> COMPUTER_CPU = ITEMS.registerItem("computer_cpu",
+            Item::new, new Item.Properties());
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
