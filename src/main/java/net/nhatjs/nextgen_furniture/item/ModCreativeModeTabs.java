@@ -19,6 +19,12 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.CHAIR_WHITE.get().asItem());
                         tabData.accept(ModBlocks.CHAIR_WOOD_OAK.get().asItem());
                         tabData.accept(ModBlocks.CHAIR_WOOD_BIRCH.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WHITE_GRAY.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WHITE_WHITE.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WOOD_OAK_GRAY.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WOOD_OAK_WHITE.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WOOD_BIRCH_GRAY.get().asItem());
+                        tabData.accept(ModBlocks.CHAIR_2_WOOD_BIRCH_WHITE.get().asItem());
                         tabData.accept(ModBlocks.TABLE_1X1_BLACK.get().asItem());
                         tabData.accept(ModBlocks.TABLE_1X1_WHITE.get().asItem());
                         tabData.accept(ModBlocks.TABLE_2X1_BLACK.get().asItem());
@@ -35,6 +41,10 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.BED_GRAY_WOOD_BIRCH.get().asItem());
                         tabData.accept(ModBlocks.BED_WHITE_WOOD_OAK.get().asItem());
                         tabData.accept(ModBlocks.BED_WHITE_WOOD_BIRCH.get().asItem());
+                        tabData.accept(ModBlocks.WARDROBE_MODERN_WOOD_OAK_LEFT.get().asItem());
+                        tabData.accept(ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT.get().asItem());
+                        tabData.accept(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_LEFT.get().asItem());
+                        tabData.accept(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_RIGHT.get().asItem());
                         tabData.accept(ModBlocks.PICTURE_FRAME.get().asItem());
                         tabData.accept(ModBlocks.TRASH_CAN_BLACK.get().asItem());
                         tabData.accept(ModBlocks.TRASH_CAN_WHITE.get().asItem());
@@ -45,9 +55,20 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.MONITOR.get().asItem());
                         tabData.accept(ModBlocks.MONITOR_GAMING_MINIMALIST.get().asItem());
                         tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK.get().asItem());
+                        tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_OAK.get().asItem());
+                        tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_BIRCH.get().asItem());
                         tabData.accept(ModBlocks.MOUSE_GAMING_BLACK.get().asItem());
+                        tabData.accept(ModBlocks.PC_GAMING.get().asItem());
                         tabData.accept(ModBlocks.LAPTOP.get().asItem());
                         tabData.accept(ModBlocks.TV_OLED.get().asItem());
                         tabData.accept(ModBlocks.GAME_CONSOLE.get().asItem());
+                        tabData.accept(ModBlocks.COMPUTER_CASE_GAMING);
+                        tabData.accept(ModItems.COMPUTER_FAN_BLADE_WHITE);
+                        tabData.accept(ModItems.COMPUTER_RAM_GAMING);
+                        tabData.accept(ModBlocks.COMPUTER_POWER_SUPPLY);
+                        tabData.accept(ModBlocks.MAINBOARD_GAMING);
+                        tabData.accept(ModBlocks.GRAPHICS_CARD_GAMING);
+                        tabData.accept(ModBlocks.AIO_COOLER_3_FANS);
+                        tabData.accept(ModItems.COMPUTER_CPU);
                     }).build());
 }

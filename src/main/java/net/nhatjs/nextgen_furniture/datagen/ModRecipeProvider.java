@@ -10,7 +10,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -59,10 +61,12 @@ public class ModRecipeProvider extends RecipeProvider {
         Block terracottaCyan = Blocks.CYAN_TERRACOTTA;
 
         //dye
+        Item dyeBlack = Items.BLACK_DYE;
         Item dyeWhite = Items.WHITE_DYE;
 
         //misc
         Item stick = Items.STICK;
+        Item ingotIron = Items.IRON_INGOT;
 
         //glass pane
         Block glassPaneStainedBlack = Blocks.BLACK_STAINED_GLASS_PANE;
@@ -70,6 +74,8 @@ public class ModRecipeProvider extends RecipeProvider {
         //electronic
         Item redstone = Items.REDSTONE;
         Block redstoneLamp = Blocks.REDSTONE_LAMP;
+        Block redstoneComparator = Blocks.COMPARATOR;
+        Block hopper = Blocks.HOPPER;
 
         //furniture mod
         DeferredBlock<Block> table1x1Black = ModBlocks.TABLE_1X1_BLACK;
@@ -77,6 +83,7 @@ public class ModRecipeProvider extends RecipeProvider {
         DeferredBlock<Block> monitorGamingMinimalist = ModBlocks.MONITOR_GAMING_MINIMALIST;
         DeferredBlock<Block> keyboardMechanicalBlack = ModBlocks.KEYBOARD_MECHANICAL_BLACK;
         DeferredBlock<Block> mouseGamingBlack = ModBlocks.MOUSE_GAMING_BLACK;
+        DeferredItem<Item> computerFanBladeWhite = ModItems.COMPUTER_FAN_BLADE_WHITE;
 
         //others
         Block bedGray = Blocks.GRAY_BED;
@@ -85,6 +92,19 @@ public class ModRecipeProvider extends RecipeProvider {
         Item endCrystal = Items.END_CRYSTAL;
         Block chest = Blocks.CHEST;
         Item painting = Items.PAINTING;
+        Item string = Items.STRING;
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.AIO_COOLER_3_FANS)
+                .pattern("111")
+                .pattern("222")
+                .pattern("31 ")
+                .define('1', concreteBlack)
+                .define('2', computerFanBladeWhite)
+                .define('3', string)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_white_blade_computer_fan", has(computerFanBladeWhite))
+                .unlockedBy("has_string", has(string))
+                .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.BED_GRAY_WOOD_BIRCH)
                 .pattern("121")
@@ -116,6 +136,66 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('2', bedWhite)
                 .unlockedBy("has_oak_planks", has(planksOak))
                 .unlockedBy("has_white_bed", has(bedWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WHITE_GRAY, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolGray)
+                .define('2', concreteWhite)
+                .unlockedBy("has_gray_wool", has(woolGray))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WHITE_WHITE, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolWhite)
+                .define('2', concreteWhite)
+                .unlockedBy("has_white_wool", has(woolWhite))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WOOD_BIRCH_GRAY, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolGray)
+                .define('2', planksBirch)
+                .unlockedBy("has_gray_wool", has(woolGray))
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WOOD_BIRCH_WHITE, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolWhite)
+                .define('2', planksBirch)
+                .unlockedBy("has_white_wool", has(woolWhite))
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WOOD_OAK_GRAY, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolGray)
+                .define('2', planksOak)
+                .unlockedBy("has_gray_wool", has(woolGray))
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_2_WOOD_OAK_WHITE, 2)
+                .pattern("1  ")
+                .pattern("111")
+                .pattern("2 2")
+                .define('1', woolWhite)
+                .define('2', planksOak)
+                .unlockedBy("has_white_wool", has(woolWhite))
+                .unlockedBy("has_oak_planks", has(planksOak))
                 .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.CHAIR_WHITE, 2)
@@ -152,6 +232,64 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("111")
                 .define('1', concreteWhite)
                 .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.COMPUTER_CASE_GAMING)
+                .pattern("143")
+                .pattern("123")
+                .pattern("113")
+                .define('1', concreteBlack)
+                .define('2', redstone)
+                .define('3', computerFanBladeWhite)
+                .define('4', buttonStone)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_redstone", has(redstone))
+                .unlockedBy("has_white_blade_computer_fan", has(computerFanBladeWhite))
+                .unlockedBy("has_stone_button", has(buttonStone))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModItems.COMPUTER_CPU)
+                .pattern(" 2 ")
+                .pattern("212")
+                .pattern(" 2 ")
+                .define('1', endCrystal)
+                .define('2', ingotIron)
+                .unlockedBy("has_end_crystal", has(endCrystal))
+                .unlockedBy("has_iron_ingot", has(ingotIron))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModItems.COMPUTER_FAN_BLADE_WHITE, 3)
+                .pattern("121")
+                .pattern("212")
+                .pattern("121")
+                .define('1', concreteBlack)
+                .define('2', ingotIron)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_iron_ingot", has(ingotIron))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.COMPUTER_POWER_SUPPLY)
+                .pattern("111")
+                .pattern("432")
+                .pattern("151")
+                .define('1', concreteBlack)
+                .define('2', redstone)
+                .define('3', endCrystal)
+                .define('4', buttonStone)
+                .define('5', redstoneComparator)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_redstone", has(redstone))
+                .unlockedBy("has_white_blade_computer_fan", has(computerFanBladeWhite))
+                .unlockedBy("has_stone_button", has(buttonStone))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModItems.COMPUTER_RAM_GAMING, 2)
+                .pattern("111")
+                .pattern("222")
+                .define('1', dyeBlack)
+                .define('2', ingotIron)
+                .unlockedBy("has_black_dye", has(dyeBlack))
+                .unlockedBy("has_iron_ingot", has(ingotIron))
                 .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.FLOOR_LAMP)
@@ -192,6 +330,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_button", has(buttonStone))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.GRAPHICS_CARD_GAMING)
+                .pattern("121")
+                .pattern("333")
+                .pattern("411")
+                .define('1', concreteBlack)
+                .define('2', endCrystal)
+                .define('3', ingotIron)
+                .define('4', redstone)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_end_crystal", has(endCrystal))
+                .unlockedBy("has_iron_ingot", has(ingotIron))
+                .unlockedBy("has_redstone", has(redstone))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.KEYBOARD_MECHANICAL_BLACK)
                 .pattern("222")
                 .pattern("313")
@@ -201,6 +353,28 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_black_concrete", has(concreteBlack))
                 .unlockedBy("has_stone_button", has(buttonStone))
                 .unlockedBy("has_white_dye", has(dyeWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_OAK)
+                .pattern("222")
+                .pattern("313")
+                .define('1', concreteBlack)
+                .define('2', buttonStone)
+                .define('3', planksOak)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_stone_button", has(buttonStone))
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_BIRCH)
+                .pattern("222")
+                .pattern("313")
+                .define('1', concreteBlack)
+                .define('2', buttonStone)
+                .define('3', planksBirch)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_stone_button", has(buttonStone))
+                .unlockedBy("has_birch_planks", has(planksBirch))
                 .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.LAPTOP)
@@ -221,6 +395,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_note_block", has(noteBlock))
                 .unlockedBy("has_end_crystal", has(endCrystal))
                 .unlockedBy("has_stone_button", has(buttonStone))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.MAINBOARD_GAMING)
+                .pattern("311")
+                .pattern("321")
+                .pattern("141")
+                .define('1', concreteBlack)
+                .define('2', endCrystal)
+                .define('3', redstone)
+                .define('4', hopper)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_end_crystal", has(endCrystal))
+                .unlockedBy("has_redstone", has(redstone))
+                .unlockedBy("has_hopper", has(hopper))
                 .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.MONITOR)
@@ -381,6 +569,54 @@ public class ModRecipeProvider extends RecipeProvider {
         shaped(RecipeCategory.DECORATIONS, ModBlocks.TV_STAND_WOOD_OAK)
                 .pattern("121")
                 .pattern("3 3")
+                .define('1', planksOak)
+                .define('2', chest)
+                .define('3', concreteBlack)
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .unlockedBy("has_chest", has(chest))
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_LEFT)
+                .pattern("111")
+                .pattern("123")
+                .pattern("113")
+                .define('1', planksBirch)
+                .define('2', chest)
+                .define('3', concreteBlack)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_chest", has(chest))
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.WARDROBE_MODERN_WOOD_OAK_LEFT)
+                .pattern("111")
+                .pattern("123")
+                .pattern("113")
+                .define('1', planksOak)
+                .define('2', chest)
+                .define('3', concreteBlack)
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .unlockedBy("has_chest", has(chest))
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_RIGHT)
+                .pattern("111")
+                .pattern("321")
+                .pattern("311")
+                .define('1', planksBirch)
+                .define('2', chest)
+                .define('3', concreteBlack)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_chest", has(chest))
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT)
+                .pattern("111")
+                .pattern("321")
+                .pattern("311")
                 .define('1', planksOak)
                 .define('2', chest)
                 .define('3', concreteBlack)
