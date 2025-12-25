@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nextgen_furniture:aio_cooler_3_fans"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "nextgen_furniture:blocks/aio_cooler_3_fans"
+}

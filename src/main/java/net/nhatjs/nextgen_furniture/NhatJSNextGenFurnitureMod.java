@@ -1,7 +1,10 @@
 package net.nhatjs.nextgen_furniture;
 
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
+import net.nhatjs.nextgen_furniture.blockentity.ModBlockEntities;
 import net.nhatjs.nextgen_furniture.entity.ModEntities;
 import net.nhatjs.nextgen_furniture.item.ModCreativeModeTabs;
 import net.nhatjs.nextgen_furniture.item.ModItems;
@@ -42,6 +45,7 @@ public class NhatJSNextGenFurnitureMod {
 
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModCreativeModeTabs.REGISTRY.register(modEventBus);
         ModItems.register(modEventBus);
         if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -50,7 +54,13 @@ public class NhatJSNextGenFurnitureMod {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
+        modEventBus.addListener((ModelEvent.RegisterAdditional e) -> {
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN));
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON));
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.GAME_CONSOLE_EXTRA));
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.TRASH_CAN_BLACK_EXTRA));
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.TRASH_CAN_WHITE_EXTRA));
+        });
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -69,7 +79,7 @@ public class NhatJSNextGenFurnitureMod {
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = NhatJSNextGenFurnitureMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = NhatJSNextGenFurnitureMod.MOD_ID, value = Dist.CLIENT)
     static class ClientModEvents {
         @SubscribeEvent
         static void onClientSetup(FMLClientSetupEvent event) {

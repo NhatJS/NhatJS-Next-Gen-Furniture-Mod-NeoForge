@@ -1,44 +1,49 @@
 package net.nhatjs.nextgen_furniture.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.nhatjs.nextgen_furniture.blockentity.ModBlockEntities;
+import net.nhatjs.nextgen_furniture.blockentity.client.LaptopBlockEntity;
+import org.jetbrains.annotations.Nullable;
 
-public class LaptopBlock extends Block {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final IntegerProperty OPEN_STAGE = IntegerProperty.create("open_stage", 0, 6);
-    public static final BooleanProperty OPEN_TARGET = BooleanProperty.create("open_target");
-    public static final IntegerProperty BOOT_STAGE = IntegerProperty.create("boot_stage", 0, 5);
-    public static final BooleanProperty SCREEN_ON = BooleanProperty.create("screen_on");
+public class LaptopBlock extends BaseEntityBlock {
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty TURN_ON = BooleanProperty.create("turn_on");
 
-    public LaptopBlock(Properties props) {
-        super(props);
-        this.registerDefaultState(this.stateDefinition.any()
+    public LaptopBlock(Properties settings) {
+        super(settings);
+        registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(OPEN_STAGE, 0)
-                .setValue(OPEN_TARGET, false)
-                .setValue(BOOT_STAGE, 0)
-                .setValue(SCREEN_ON, false));
+                .setValue(TURN_ON, false));
     }
+
+    public static final MapCodec<LaptopBlock> CODEC = simpleCodec(LaptopBlock::new);
+
+    @Override
+    public MapCodec<LaptopBlock> codec() {
+        return CODEC;
+    }
+
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
@@ -49,93 +54,60 @@ public class LaptopBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN_STAGE, OPEN_TARGET, BOOT_STAGE, SCREEN_ON);
+        builder.add(FACING, TURN_ON);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(TURN_ON, false);
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
-                                           Player player, InteractionHand hand, BlockHitResult hit) {
-        InteractionResult r = handleUse(state, level, pos, player);
-        return r.consumesAction()
-                ? ItemInteractionResult.sidedSuccess(level.isClientSide())
-                : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new LaptopBlockEntity(pos, state);
     }
 
     @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
-                                            Player player, BlockHitResult hit) {
-        return handleUse(state, level, pos, player);
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
-    private InteractionResult handleUse(BlockState state, Level level, BlockPos pos, Player player) {
-        if (level.isClientSide) return InteractionResult.SUCCESS;
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+                                                                  BlockEntityType<T> type) {
+        return type == ModBlockEntities.LAPTOP.get() ? (lvl, pos, st, be) -> {
+            if (be instanceof LaptopBlockEntity lap) {
+                LaptopBlockEntity.tick(lvl, pos, st, lap);
+            }
+        } : null;
+    }
 
-        int stage = state.getValue(OPEN_STAGE);
-        boolean screenOn = state.getValue(SCREEN_ON);
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos,
+                              Player player, BlockHitResult hit) {
+        if (world.isClientSide()) return InteractionResult.SUCCESS;
 
-        if (player.isShiftKeyDown()) {
-            if (stage == 0) {
-                level.setBlock(pos, state.setValue(OPEN_TARGET, true), Block.UPDATE_ALL);
-                schedule(level, pos, 2);
+        BlockEntity be = world.getBlockEntity(pos);
+        if (!(be instanceof LaptopBlockEntity lap)) return InteractionResult.PASS;
+
+        boolean sneaking = player.isShiftKeyDown() || player.isCrouching();
+
+        if (sneaking) {
+            if (lap.isPowered()) {
                 return InteractionResult.CONSUME;
-            }if (stage == 5 || stage == 6) {
-                if (screenOn) return InteractionResult.CONSUME;
-                level.setBlock(pos, state.setValue(OPEN_TARGET, false), Block.UPDATE_ALL);
-                schedule(level, pos, 2);
+            }
+            lap.setTargetOpen(!lap.isTargetOpen());
+            world.sendBlockUpdated(pos, state, state, 3);
+            return InteractionResult.CONSUME;
+        } else {
+            if (lap.isOpenEnough()) {
+                lap.setPowered(!lap.isPowered());
+                //world.setBlock(pos, state.setValue(LaptopBlock.TURN_ON, lap.isPowered()), Block.UPDATE_ALL);
+                world.sendBlockUpdated(pos, state, state, 3);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.CONSUME;
         }
-
-        if (stage == 5) {
-            level.setBlock(pos, state.setValue(OPEN_STAGE, 6).setValue(BOOT_STAGE, 0).setValue(SCREEN_ON, false), Block.UPDATE_ALL);
-            schedule(level, pos, 10);
-            return InteractionResult.CONSUME;
-        }
-        if (stage == 6) {
-            if (screenOn) {
-                level.setBlock(pos, state.setValue(SCREEN_ON, false).setValue(BOOT_STAGE, 0).setValue(OPEN_STAGE, 5), Block.UPDATE_ALL);
-            } else {
-                level.setBlock(pos, state.setValue(BOOT_STAGE, 0), Block.UPDATE_ALL);
-                schedule(level, pos, 10);
-            }
-            return InteractionResult.CONSUME;
-        }
-
-        return InteractionResult.CONSUME;
     }
 
-    private static void schedule(Level level, BlockPos pos, int delay) {
-        if (level instanceof ServerLevel sl) {
-            sl.scheduleTick(pos, sl.getBlockState(pos).getBlock(), delay);
-        }
-    }
-
-    @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int stage = state.getValue(OPEN_STAGE);
-        boolean wantOpen = state.getValue(OPEN_TARGET);
-
-        if ((wantOpen && stage < 5) || (!wantOpen && stage > 0)) {
-            int next = wantOpen ? stage + 1 : stage - 1;
-            level.setBlock(pos, state.setValue(OPEN_STAGE, next), Block.UPDATE_ALL);
-            schedule(level, pos, 2);
-            return;
-        }
-
-        if (stage == 6 && !state.getValue(SCREEN_ON)) {
-            int boot = state.getValue(BOOT_STAGE);
-            if (boot < 5) {
-                level.setBlock(pos, state.setValue(BOOT_STAGE, boot + 1), Block.UPDATE_ALL);
-                schedule(level, pos, 20);
-            } else {
-                level.setBlock(pos, state.setValue(SCREEN_ON, true).setValue(BOOT_STAGE, 0), Block.UPDATE_ALL);
-            }
-        }
-    }
 }

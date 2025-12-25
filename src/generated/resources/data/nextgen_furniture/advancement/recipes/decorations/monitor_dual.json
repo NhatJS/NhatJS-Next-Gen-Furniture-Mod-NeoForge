@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_gaming_mouse": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nextgen_furniture:mouse_gaming_black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_black_mechanical_keyboard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nextgen_furniture:keyboard_mechanical_black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_minimalist_gaming_monitor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nextgen_furniture:monitor_gaming_minimalist"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nextgen_furniture:monitor_dual"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_minimalist_gaming_monitor",
+      "has_black_mechanical_keyboard",
+      "has_black_gaming_mouse"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nextgen_furniture:monitor_dual"
+    ]
+  }
+}

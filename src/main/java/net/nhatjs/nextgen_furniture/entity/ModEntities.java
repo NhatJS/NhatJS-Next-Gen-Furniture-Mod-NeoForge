@@ -22,7 +22,6 @@ public class ModEntities {
             ENTITY_TYPES.register("sofa_entity", () -> EntityType.Builder.of(ChairBlockEntity::new, MobCategory.MISC)
                     .sized(0.5f, 0.55f).build("sofa_entity"));
 
-
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
