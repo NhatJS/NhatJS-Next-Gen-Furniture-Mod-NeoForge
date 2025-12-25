@@ -2,6 +2,10 @@ package net.nhatjs.nextgen_furniture.block.gamingpc;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -56,8 +60,16 @@ public class GamingPCAdded8Block extends Block {
             Direction facing =  state.getValue(HorizontalDirectionalBlock.FACING);
             world.setBlock(pos, ModBlocks.PC_GAMING.get().defaultBlockState()
                     .setValue(HorizontalDirectionalBlock.FACING, facing), Block.UPDATE_ALL);
+            playBuildSuccessEffects(world, pos);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.SUCCESS;
+    }
+
+    private void playBuildSuccessEffects(Level world, BlockPos pos) {
+        if (!(world instanceof ServerLevel serverWorld)) return;
+
+        serverWorld.playSound(null, pos, SoundEvents.NOTE_BLOCK_PLING.value(), SoundSource.BLOCKS, 0.8f, 1.0f);
+        serverWorld.sendParticles(ParticleTypes.ELECTRIC_SPARK, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 5, 0.25, 0.15, 0.25, 0.01);
     }
 }

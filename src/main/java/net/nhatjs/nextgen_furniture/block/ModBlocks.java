@@ -131,21 +131,28 @@ public class ModBlocks {
     public static final DeferredBlock<Block> AIO_COOLER_3_FANS = registerBlock("aio_cooler_3_fans",
             (properties) -> new AIOCoolerBlock(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_1 = registerBlock("pc_gaming_added_1",
-            (properties) -> new GamingPCAdded1Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded1Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_2 = registerBlock("pc_gaming_added_2",
-            (properties) -> new GamingPCAdded2Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded2Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_3 = registerBlock("pc_gaming_added_3",
-            (properties) -> new GamingPCAdded3Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded3Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_4 = registerBlock("pc_gaming_added_4",
-            (properties) -> new GamingPCAdded4Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded4Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_5 = registerBlock("pc_gaming_added_5",
-            (properties) -> new GamingPCAdded5Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded5Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_6 = registerBlock("pc_gaming_added_6",
-            (properties) -> new GamingPCAdded6Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded6Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_7 = registerBlock("pc_gaming_added_7",
-            (properties) -> new GamingPCAdded7Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded7Block(properties.strength(0.75F).noOcclusion()));
     public static final DeferredBlock<Block> PC_GAMING_ADDED_8 = registerBlock("pc_gaming_added_8",
-            (properties) -> new GamingPCAdded8Block(properties.strength(0.75F).noOcclusion().noLootTable()));
+            (properties) -> new GamingPCAdded8Block(properties.strength(0.75F).noOcclusion()));
+
+    public static final DeferredBlock<Block> MONITOR_DUAL = registerBlock("monitor_dual",
+            (properties) -> new DualMonitorBlock(properties.strength(1F).noOcclusion()));
+    public static final DeferredBlock<Block> MONITOR_DUAL_ALT = registerBlock("monitor_dual_alt",
+            (properties) -> new DualMonitorAlternateBlock(properties.strength(1F).noOcclusion()));
+    public static final DeferredBlock<Block> MONITOR_DUAL_ALT_2 = registerBlock("monitor_dual_alt_2",
+            (properties) -> new DualMonitorAlternate2Block(properties.strength(1F).noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);

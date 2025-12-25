@@ -10,6 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.nhatjs.nextgen_furniture.datagen.ModBlockLootTableProvider;
 import net.nhatjs.nextgen_furniture.datagen.ModItemTagProvider;
+import net.nhatjs.nextgen_furniture.datagen.ModModelProvider;
 import net.nhatjs.nextgen_furniture.datagen.ModRecipeProvider;
 
 import java.util.Collections;
@@ -29,6 +30,7 @@ public class NhatJSNextGenFurnitureModDataGenerators {
                 lookupProvider));
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput, lookupProvider));
 
+        generator.addProvider(true, new ModModelProvider(packOutput));
         generator.addProvider(true, new ModItemTagProvider(packOutput, lookupProvider));
     }
 
@@ -43,6 +45,7 @@ public class NhatJSNextGenFurnitureModDataGenerators {
                 lookupProvider));
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput, lookupProvider));
 
+        generator.addProvider(true, new ModModelProvider(packOutput));
         generator.addProvider(true, new ModItemTagProvider(packOutput, lookupProvider));
     }
 }

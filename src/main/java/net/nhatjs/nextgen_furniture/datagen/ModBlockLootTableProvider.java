@@ -74,6 +74,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MAINBOARD_GAMING.get());
         dropSelf(ModBlocks.GRAPHICS_CARD_GAMING.get());
         dropSelf(ModBlocks.AIO_COOLER_3_FANS.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_1.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_2.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_3.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_4.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_5.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_6.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_7.get());
+        dropSelf(ModBlocks.PC_GAMING_ADDED_8.get());
+
+        dropSelf(ModBlocks.MONITOR_DUAL.get());
+        dropSelf(ModBlocks.MONITOR_DUAL_ALT.get());
+        dropSelf(ModBlocks.MONITOR_DUAL_ALT_2.get());
     }
 
     @Override
