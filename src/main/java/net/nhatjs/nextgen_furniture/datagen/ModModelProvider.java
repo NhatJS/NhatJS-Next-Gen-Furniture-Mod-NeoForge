@@ -99,7 +99,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.BED_WHITE_WOOD_OAK.get());
 
         registerHorizontalWithBoolean(blockModels, ModBlocks.CHAIR_2_WHITE_GRAY,
-                BlockStateProperties.HORIZONTAL_FACING, ChairBlock.MOVE, chair2WhiteWhite, chair2WhiteWhiteMoved);
+                BlockStateProperties.HORIZONTAL_FACING, ChairBlock.MOVE, chair2WhiteGray, chair2WhiteGrayMoved);
 
         registerHorizontalWithBoolean(blockModels, ModBlocks.CHAIR_2_WHITE_WHITE,
                 BlockStateProperties.HORIZONTAL_FACING, ChairBlock.MOVE, chair2WhiteWhite, chair2WhiteWhiteMoved);
