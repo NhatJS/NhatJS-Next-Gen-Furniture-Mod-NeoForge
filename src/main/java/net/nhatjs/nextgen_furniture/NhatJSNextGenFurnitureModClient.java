@@ -99,6 +99,10 @@ public class NhatJSNextGenFurnitureModClient {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PC_GAMING_ADDED_6.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PC_GAMING_ADDED_7.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PC_GAMING_ADDED_8.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL_ALT.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL_ALT_2.get(), ChunkSectionLayer.CUTOUT_MIPPED);
         });
     }
 }

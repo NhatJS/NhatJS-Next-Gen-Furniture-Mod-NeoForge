@@ -53,6 +53,7 @@ public class ModCreativeModeTabs {
                         tabData.accept(ModBlocks.FLOOR_LAMP.get().asItem());
                         tabData.accept(ModBlocks.FLOOR_LAMP_B.get().asItem());
                         tabData.accept(ModBlocks.MONITOR.get().asItem());
+                        tabData.accept(ModBlocks.MONITOR_DUAL.get().asItem());
                         tabData.accept(ModBlocks.MONITOR_GAMING_MINIMALIST.get().asItem());
                         tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK.get().asItem());
                         tabData.accept(ModBlocks.KEYBOARD_MECHANICAL_BLACK_WOOD_OAK.get().asItem());

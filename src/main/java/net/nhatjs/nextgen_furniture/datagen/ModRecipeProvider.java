@@ -422,6 +422,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_black_gaming_mouse", has(mouseGamingBlack))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.MONITOR_DUAL)
+                .pattern("11")
+                .pattern("23")
+                .define('1', monitorGamingMinimalist)
+                .define('2', keyboardMechanicalBlack)
+                .define('3', mouseGamingBlack)
+                .unlockedBy("has_minimalist_gaming_monitor", has(monitorGamingMinimalist))
+                .unlockedBy("has_black_mechanical_keyboard", has(keyboardMechanicalBlack))
+                .unlockedBy("has_black_gaming_mouse", has(mouseGamingBlack))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.MONITOR_GAMING_MINIMALIST)
                 .pattern("141")
                 .pattern("121")
