@@ -9,7 +9,10 @@ import net.minecraft.client.renderer.block.ModelBlockRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
@@ -75,13 +78,13 @@ public class LaptopRenderer implements BlockEntityRenderer<LaptopBlockEntity, La
         poseStack.translate(-0.1, -0.04, -0.735);
 
 
-        submitNodeCollector.submitBlockModel(poseStack, RenderType.cutout(),
+        submitNodeCollector.submitBlockModel(poseStack, RenderTypes.cutoutMovingBlock(),
                 Minecraft.getInstance().getModelManager().getStandaloneModel(
                         NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ID),
                 1f, 1f, 1f, state.light, state.overlay, 0);
 
         if (state.powered) {
-            submitNodeCollector.submitBlockModel(poseStack, RenderType.cutout(),
+            submitNodeCollector.submitBlockModel(poseStack, RenderTypes.cutoutMovingBlock(),
                     Minecraft.getInstance().getModelManager().getStandaloneModel(
                             NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON_ID),
                     1f, 1f, 1f, LightTexture.FULL_BRIGHT, state.overlay, 0);

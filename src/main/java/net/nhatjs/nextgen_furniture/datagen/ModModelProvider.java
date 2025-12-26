@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.block.model.VariantMutator;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -29,61 +29,60 @@ public class ModModelProvider extends ModelProvider {
         super(output, NhatJSNextGenFurnitureMod.MOD_ID);
     }
 
-
-    ResourceLocation chair2WhiteGray = id("chair_2_white_gray");
-    ResourceLocation chair2WhiteGrayMoved = id("chair_2_white_gray_moved");
-    ResourceLocation chair2WhiteWhite = id("chair_2_white_white");
-    ResourceLocation chair2WhiteWhiteMoved = id("chair_2_white_white_moved");
-    ResourceLocation chair2WoodBirchGray = id("chair_2_wood_birch_gray");
-    ResourceLocation chair2WoodBirchGrayMoved = id("chair_2_wood_birch_gray_moved");
-    ResourceLocation chair2WoodBirchWhite = id("chair_2_wood_birch_white");
-    ResourceLocation chair2WoodBirchWhiteMoved = id("chair_2_wood_birch_white_moved");
-    ResourceLocation chair2WoodOakGray = id("chair_2_wood_oak_gray");
-    ResourceLocation chair2WoodOakGrayMoved = id("chair_2_wood_oak_gray_moved");
-    ResourceLocation chair2WoodOakWhite = id("chair_2_wood_oak_white");
-    ResourceLocation chair2WoodOakWhiteMoved = id("chair_2_wood_oak_white_moved");
-    ResourceLocation chairWhite = id("chair_white");
-    ResourceLocation chairWhiteMoved = id("chair_white_moved");
-    ResourceLocation chairWoodBirch = id("chair_wood_birch");
-    ResourceLocation chairWoodBirchMoved = id("chair_wood_birch_moved");
-    ResourceLocation chairWoodOak = id("chair_wood_oak");
-    ResourceLocation chairWoodOakMoved = id("chair_wood_oak_moved");
-    ResourceLocation floorLampOff = id("floor_lamp");
-    ResourceLocation floorLampOn = id("floor_lamp_on");
-    ResourceLocation floorLampBOff = id("floor_lamp_b");
-    ResourceLocation floorLampBOn = id("floor_lamp_b_on");
-    ResourceLocation gameConsole = id("game_console");
-    ResourceLocation gameConsoleOn = id("game_console_on");
-    ResourceLocation laptop = id("laptop_base");
-    ResourceLocation laptopOn = id("laptop_base_on");
-    ResourceLocation monitor = id("monitor_off");
-    ResourceLocation monitorOn = id("monitor_on");
-    ResourceLocation monitorDual = id("monitor_dual_off");
-    ResourceLocation monitorDualOn = id("monitor_dual_on");
-    ResourceLocation monitorDualAlternate = id("monitor_dual_alt_off");
-    ResourceLocation monitorDualAlternateOn = id("monitor_dual_alt_on");
-    ResourceLocation monitorDualAlternate2 = id("monitor_dual_alt_2_off");
-    ResourceLocation monitorDualAlternate2On = id("monitor_dual_alt_2_on");
-    static ResourceLocation pcGaming = id("pc_gaming");
-    static ResourceLocation pcGamingBoot = id("pc_gaming_boot");
-    static ResourceLocation pcGamingOn = id("pc_gaming_on");
-    ResourceLocation pictureFrame = id("picture_frame");
-    static ResourceLocation sofaGray = id("sofa_single_gray");
-    static ResourceLocation sofaLeftGray = id("sofa_left_gray");
-    static ResourceLocation sofaRightGray = id("sofa_right_gray");
-    static ResourceLocation sofaMiddleGray = id("sofa_middle_gray");;
-    static ResourceLocation sofaCornerLeftGray = id("sofa_corner_left_gray");
-    static ResourceLocation sofaCornerRightGray = id("sofa_corner_right_gray");
-    static ResourceLocation sofaWhite = id("sofa_single_white");
-    static ResourceLocation sofaLeftWhite = id("sofa_left_white");
-    static ResourceLocation sofaRightWhite = id("sofa_right_white");
-    static ResourceLocation sofaMiddleWhite = id("sofa_middle_white");;
-    static ResourceLocation sofaCornerLeftWhite = id("sofa_corner_left_white");
-    static ResourceLocation sofaCornerRightWhite = id("sofa_corner_right_white");
-    static ResourceLocation tvOled = id("tv_oled_off");
-    static ResourceLocation tvOledOn = id("tv_oled_on");
-    static ResourceLocation tvOledMount = id("tv_oled_mount_off");
-    static ResourceLocation tvOledMountOn = id("tv_oled_mount_on");
+    Identifier chair2WhiteGray = id("chair_2_white_gray");
+    Identifier chair2WhiteGrayMoved = id("chair_2_white_gray_moved");
+    Identifier chair2WhiteWhite = id("chair_2_white_white");
+    Identifier chair2WhiteWhiteMoved = id("chair_2_white_white_moved");
+    Identifier chair2WoodBirchGray = id("chair_2_wood_birch_gray");
+    Identifier chair2WoodBirchGrayMoved = id("chair_2_wood_birch_gray_moved");
+    Identifier chair2WoodBirchWhite = id("chair_2_wood_birch_white");
+    Identifier chair2WoodBirchWhiteMoved = id("chair_2_wood_birch_white_moved");
+    Identifier chair2WoodOakGray = id("chair_2_wood_oak_gray");
+    Identifier chair2WoodOakGrayMoved = id("chair_2_wood_oak_gray_moved");
+    Identifier chair2WoodOakWhite = id("chair_2_wood_oak_white");
+    Identifier chair2WoodOakWhiteMoved = id("chair_2_wood_oak_white_moved");
+    Identifier chairWhite = id("chair_white");
+    Identifier chairWhiteMoved = id("chair_white_moved");
+    Identifier chairWoodBirch = id("chair_wood_birch");
+    Identifier chairWoodBirchMoved = id("chair_wood_birch_moved");
+    Identifier chairWoodOak = id("chair_wood_oak");
+    Identifier chairWoodOakMoved = id("chair_wood_oak_moved");
+    Identifier floorLampOff = id("floor_lamp");
+    Identifier floorLampOn = id("floor_lamp_on");
+    Identifier floorLampBOff = id("floor_lamp_b");
+    Identifier floorLampBOn = id("floor_lamp_b_on");
+    Identifier gameConsole = id("game_console");
+    Identifier gameConsoleOn = id("game_console_on");
+    Identifier laptop = id("laptop_base");
+    Identifier laptopOn = id("laptop_base_on");
+    Identifier monitor = id("monitor_off");
+    Identifier monitorOn = id("monitor_on");
+    Identifier monitorDual = id("monitor_dual_off");
+    Identifier monitorDualOn = id("monitor_dual_on");
+    Identifier monitorDualAlternate = id("monitor_dual_alt_off");
+    Identifier monitorDualAlternateOn = id("monitor_dual_alt_on");
+    Identifier monitorDualAlternate2 = id("monitor_dual_alt_2_off");
+    Identifier monitorDualAlternate2On = id("monitor_dual_alt_2_on");
+    static Identifier pcGaming = id("pc_gaming");
+    static Identifier pcGamingBoot = id("pc_gaming_boot");
+    static Identifier pcGamingOn = id("pc_gaming_on");
+    Identifier pictureFrame = id("picture_frame");
+    static Identifier sofaGray = id("sofa_single_gray");
+    static Identifier sofaLeftGray = id("sofa_left_gray");
+    static Identifier sofaRightGray = id("sofa_right_gray");
+    static Identifier sofaMiddleGray = id("sofa_middle_gray");;
+    static Identifier sofaCornerLeftGray = id("sofa_corner_left_gray");
+    static Identifier sofaCornerRightGray = id("sofa_corner_right_gray");
+    static Identifier sofaWhite = id("sofa_single_white");
+    static Identifier sofaLeftWhite = id("sofa_left_white");
+    static Identifier sofaRightWhite = id("sofa_right_white");
+    static Identifier sofaMiddleWhite = id("sofa_middle_white");;
+    static Identifier sofaCornerLeftWhite = id("sofa_corner_left_white");
+    static Identifier sofaCornerRightWhite = id("sofa_corner_right_white");
+    static Identifier tvOled = id("tv_oled_off");
+    static Identifier tvOledOn = id("tv_oled_on");
+    static Identifier tvOledMount = id("tv_oled_mount_off");
+    static Identifier tvOledMountOn = id("tv_oled_mount_on");
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
@@ -216,7 +215,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT.get());
     }
 
-    //private void horizontalBlockWithCustomItem(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, ResourceLocation model) {
+    //private void horizontalBlockWithCustomItem(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, Identifier model) {
     //    PropertyDispatch<MultiVariant> map = PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
     //            .select(Direction.NORTH,  BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)))
     //            .select(Direction.EAST,  BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
@@ -227,7 +226,7 @@ public class ModModelProvider extends ModelProvider {
     //    blockModelGenerators.registerSimpleItemModel(block.get(), model);
     //}
 
-    private void facingBlockWithItem(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, ResourceLocation model) {
+    private void facingBlockWithItem(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, Identifier model) {
         PropertyDispatch<MultiVariant> map = PropertyDispatch.initial(BlockStateProperties.FACING)
                 .select(Direction.NORTH,  BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)))
                 .select(Direction.EAST,  BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)))
@@ -241,7 +240,7 @@ public class ModModelProvider extends ModelProvider {
     }
 
     public static void registerHorizontalWithBoolean(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, EnumProperty<Direction> facing,
-                                                     BooleanProperty booleanProperty, ResourceLocation model, ResourceLocation modelBoolean) {
+                                                     BooleanProperty booleanProperty, Identifier model, Identifier modelBoolean) {
         PropertyDispatch.C2<MultiVariant, Direction, Boolean> map = PropertyDispatch.C2.initial(facing, booleanProperty);
 
         map.select(Direction.NORTH, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)));
@@ -257,7 +256,7 @@ public class ModModelProvider extends ModelProvider {
     }
 
     public static void registerGamingPCState(BlockModelGenerators blockStateModelGenerator, DeferredBlock<Block> block, EnumProperty<Direction> facing, BooleanProperty on,
-                                             BooleanProperty boot, ResourceLocation pcOff, ResourceLocation pcBoot, ResourceLocation pcOn) {
+                                             BooleanProperty boot, Identifier pcOff, Identifier pcBoot, Identifier pcOn) {
         PropertyDispatch.C3<MultiVariant, Direction, Boolean, Boolean> state =
                 PropertyDispatch.C3.initial(facing, on, boot);
 
@@ -279,8 +278,8 @@ public class ModModelProvider extends ModelProvider {
 
     public static void registerSofa(BlockModelGenerators blockStateModelGenerator, DeferredBlock<Block> block, EnumProperty<Direction> facing,
                                     EnumProperty<SofaBlock.Part> part,
-                                    ResourceLocation single, ResourceLocation left, ResourceLocation right,
-                                    ResourceLocation middle, ResourceLocation cornerLeft, ResourceLocation cornerRight) {
+                                    Identifier single, Identifier left, Identifier right,
+                                    Identifier middle, Identifier cornerLeft, Identifier cornerRight) {
         PropertyDispatch.C2<MultiVariant, Direction, SofaBlock.Part> map = PropertyDispatch.C2.initial(facing, part);
 
         for (Direction dir : Direction.Plane.HORIZONTAL) {
@@ -319,8 +318,8 @@ public class ModModelProvider extends ModelProvider {
         blockStateModelGenerator.blockStateOutput.accept(MultiVariantGenerator.dispatch(block.get()).with(map));
     }
 
-    public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(NhatJSNextGenFurnitureMod.MOD_ID, "block/" + path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(NhatJSNextGenFurnitureMod.MOD_ID, "block/" + path);
     }
 
     @Override
