@@ -65,6 +65,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlockWithItem(ModBlocks.COFFEE_TABLE_WHITE.get());
         horizontalBlockWithItem(ModBlocks.COMPUTER_CASE_GAMING.get());
         horizontalBlockWithItem(ModBlocks.COMPUTER_POWER_SUPPLY.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_2_K_M_WOOD_OAK.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_3_K_M_WOOD_OAK.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE.get());
+        horizontalBlockWithItem(ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE.get());
 
         horizontalWithBoolean(ModBlocks.FLOOR_LAMP.get(), FloorLampBlock.LIT,
                 models().getExistingFile(modLoc("block/floor_lamp")),
@@ -86,6 +94,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalWithBoolean(ModBlocks.LAPTOP.get(), LaptopBlock.TURN_ON,
                 models().getExistingFile(modLoc("block/laptop_base")),
                 models().getExistingFile(modLoc("block/laptop_base_on")));
+
+        directionalBlockWithBoolean(ModBlocks.LIGHT_MODERN.get(), ModernLightBlock.LIT,
+                models().getExistingFile(modLoc("block/light_modern")),
+                models().getExistingFile(modLoc("block/light_modern")));
 
         horizontalBlockWithItem(ModBlocks.MAINBOARD_GAMING.get());
 
@@ -121,14 +133,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
         directionalBlockWithItem(ModBlocks.PICTURE_FRAME.get());
         horizontalBlockWithItem(ModBlocks.TABLE_1X1_BLACK.get());
         horizontalBlockWithItem(ModBlocks.TABLE_1X1_WHITE.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_1X1_WOOD_OAK.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_1X1_WOOD_BIRCH.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_BLACK.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_BLACK_ALT.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_BLACK_ALT_2.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_WHITE.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_WHITE_ALT.get());
         horizontalBlockWithItem(ModBlocks.TABLE_2X1_WHITE_ALT_2.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_OAK.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_OAK_ALT.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_OAK_ALT_2.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_BIRCH.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT_2.get());
         horizontalBlockWithItem(ModBlocks.TABLE_3X1_BLACK.get());
         horizontalBlockWithItem(ModBlocks.TABLE_3X1_WHITE.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_3X1_WOOD_OAK.get());
+        horizontalBlockWithItem(ModBlocks.TABLE_3X1_WOOD_BIRCH.get());
         horizontalBlockWithItem(ModBlocks.TABLE_DINING_WHITE.get());
         horizontalBlockWithItem(ModBlocks.TABLE_DINING_WOOD_BIRCH.get());
         horizontalBlockWithItem(ModBlocks.TABLE_DINING_WOOD_OAK.get());
@@ -162,6 +184,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlockWithItem(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_RIGHT.get());
         horizontalBlockWithItem(ModBlocks.WARDROBE_MODERN_WOOD_OAK_LEFT.get());
         horizontalBlockWithItem(ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT.get());
+        horizontalBlockWithItem(ModBlocks.WASHING_MACHINE.get());
     }
 
     protected void horizontalBlockWithItem(Block block) {
@@ -194,9 +217,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
+    protected void directionalBlockWithBoolean(Block block, BooleanProperty property, ModelFile offModel, ModelFile onModel) {
+        this.getVariantBuilder(block).forAllStates(state -> {
+            Direction dir = state.getValue(BlockStateProperties.FACING);
+            boolean flag = state.getValue(property);
+            ModelFile model = flag ? onModel : offModel;
+            int xRot = dir == Direction.UP ? 270 : dir == Direction.DOWN ? 90 : 0;
+            int yRot = switch (dir) {
+                case EAST  -> 90;
+                case SOUTH -> 180;
+                case WEST  -> 270;
+                default    -> 0;
+            };
+            return ConfiguredModel.builder().modelFile(model).rotationX(xRot).rotationY(yRot).build();
+        });
+    }
+
     private void horizontalWithBoolean(Block block, BooleanProperty property, ModelFile offModel, ModelFile onModel) {
-        this.getVariantBuilder(block)
-                .forAllStates(state -> {
+        this.getVariantBuilder(block).forAllStates(state -> {
                     Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
                     boolean flag = state.getValue(property);
                     ModelFile model = flag ? onModel : offModel;
@@ -212,8 +250,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void gamingPCStates(Block block, BooleanProperty property, BooleanProperty property2, ModelFile offModel, ModelFile bootModel, ModelFile onModel) {
-        this.getVariantBuilder(block)
-                .forAllStates(state -> {
+        this.getVariantBuilder(block).forAllStates(state -> {
                     Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
                     boolean on = state.getValue(property);
                     boolean boot = state.getValue(property2);
@@ -231,8 +268,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void sofaStates(Block block, EnumProperty<SofaBlock.Part> property, ModelFile single, ModelFile left,
                             ModelFile right, ModelFile middle, ModelFile cornerLeft, ModelFile cornerRight) {
-        this.getVariantBuilder(block)
-                .forAllStates(state -> {
+        this.getVariantBuilder(block).forAllStates(state -> {
                     Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
                     SofaBlock.Part part = state.getValue(property);
                     ModelFile model = switch (part) {
@@ -255,8 +291,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void tvStates(Block block, BooleanProperty property, EnumProperty<TVBlock.Mount> property2, ModelFile offModel, ModelFile onModel, ModelFile offMountModel, ModelFile onMountModel) {
-        this.getVariantBuilder(block)
-                .forAllStates(state -> {
+        this.getVariantBuilder(block).forAllStates(state -> {
                     Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
                     boolean on = state.getValue(property);
                     TVBlock.Mount mount = state.getValue(property2);

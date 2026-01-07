@@ -102,7 +102,7 @@ public class LaptopBlock extends BaseEntityBlock {
         } else {
             if (lap.isOpenEnough()) {
                 lap.setPowered(!lap.isPowered());
-                //world.setBlock(pos, state.setValue(LaptopBlock.TURN_ON, lap.isPowered()), Block.UPDATE_ALL);
+                world.setBlock(pos, state.setValue(LaptopBlock.TURN_ON, lap.isPowered()), Block.UPDATE_ALL);
                 world.sendBlockUpdated(pos, state, state, 3);
                 return InteractionResult.CONSUME;
             }

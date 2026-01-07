@@ -21,6 +21,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.nhatjs.nextgen_furniture.item.ModItems;
 
 public class DualMonitorBlock extends HorizontalDirectionalBlock {
     public static MapCodec<DualMonitorBlock> CODEC = simpleCodec(DualMonitorBlock::new);
@@ -96,7 +97,7 @@ public class DualMonitorBlock extends HorizontalDirectionalBlock {
                     .setValue(DualMonitorAlternateBlock.TURN_ON, false), Block.UPDATE_ALL);
             return InteractionResult.SUCCESS;
         }
-        else if (player.getMainHandItem().is(Items.STICK) && !current) {
+        else if (player.getMainHandItem().is(ModItems.SCREWDRIVER) && !current) {
             Direction facing =  state.getValue(HorizontalDirectionalBlock.FACING);
             world.setBlock(pos, ModBlocks.MONITOR.get().defaultBlockState()
                     .setValue(HorizontalDirectionalBlock.FACING, facing)

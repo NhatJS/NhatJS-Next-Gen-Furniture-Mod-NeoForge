@@ -60,6 +60,7 @@ public class NhatJSNextGenFurnitureMod {
             e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.GAME_CONSOLE_EXTRA));
             e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.TRASH_CAN_BLACK_EXTRA));
             e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.TRASH_CAN_WHITE_EXTRA));
+            e.register(ModelResourceLocation.standalone(NhatJSNextGenFurnitureModClient.LIGHT_MODERN_EXTRA));
         });
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
