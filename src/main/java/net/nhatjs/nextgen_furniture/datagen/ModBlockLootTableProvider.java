@@ -86,6 +86,27 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MONITOR_DUAL.get());
         dropSelf(ModBlocks.MONITOR_DUAL_ALT.get());
         dropSelf(ModBlocks.MONITOR_DUAL_ALT_2.get());
+
+        dropSelf(ModBlocks.DRAWER_3_K_M_WOOD_OAK.get());
+        dropSelf(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE.get());
+        dropSelf(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE.get());
+        dropSelf(ModBlocks.DRAWER_2_K_M_WOOD_OAK.get());
+        dropSelf(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE.get());
+        dropSelf(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE.get());
+        dropSelf(ModBlocks.LIGHT_MODERN.get());
+        dropSelf(ModBlocks.TABLE_1X1_WOOD_OAK.get());
+        dropSelf(ModBlocks.TABLE_1X1_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_OAK.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_OAK_ALT.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_OAK_ALT_2.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT.get());
+        dropSelf(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT_2.get());
+        dropSelf(ModBlocks.TABLE_3X1_WOOD_OAK.get());
+        dropSelf(ModBlocks.TABLE_3X1_WOOD_BIRCH.get());
+        dropSelf(ModBlocks.WASHING_MACHINE.get());
     }
 
     @Override

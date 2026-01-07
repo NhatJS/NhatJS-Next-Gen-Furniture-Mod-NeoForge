@@ -57,6 +57,7 @@ public class NhatJSNextGenFurnitureMod {
         modEventBus.addListener((ModelEvent.RegisterStandalone e) -> {
             e.register(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ID,  SimpleUnbakedStandaloneModel.blockStateModel(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN));
             e.register(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON_ID,  SimpleUnbakedStandaloneModel.blockStateModel(NhatJSNextGenFurnitureModClient.LAPTOP_SCREEN_ON));
+            e.register(NhatJSNextGenFurnitureModClient.LIGHT_MODERN_EXTRA_ID,  SimpleUnbakedStandaloneModel.blockStateModel(NhatJSNextGenFurnitureModClient.LIGHT_MODERN_EXTRA));
         });
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us

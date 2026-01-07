@@ -12,6 +12,7 @@ import net.neoforged.neoforge.client.model.standalone.StandaloneModelKey;
 import net.nhatjs.nextgen_furniture.block.ModBlocks;
 import net.nhatjs.nextgen_furniture.blockentity.ModBlockEntities;
 import net.nhatjs.nextgen_furniture.blockentity.renderer.LaptopRenderer;
+import net.nhatjs.nextgen_furniture.blockentity.renderer.LightRenderer;
 import net.nhatjs.nextgen_furniture.entity.ModEntities;
 import net.nhatjs.nextgen_furniture.entity.renderer.ChairRenderer;
 
@@ -20,12 +21,16 @@ public class NhatJSNextGenFurnitureModClient {
         eventBus.addListener(NhatJSNextGenFurnitureModClient::onClientSetup);
     }
     public static final ResourceLocation LAPTOP_SCREEN = ResourceLocation.fromNamespaceAndPath(
-            NhatJSNextGenFurnitureMod.MOD_ID, "block/laptop_screen_off");
+            NhatJSNextGenFurnitureMod.MOD_ID, "extra/laptop_screen");
     public static final ResourceLocation LAPTOP_SCREEN_ON = ResourceLocation.fromNamespaceAndPath(
-            NhatJSNextGenFurnitureMod.MOD_ID, "block/laptop_screen_on");
+            NhatJSNextGenFurnitureMod.MOD_ID, "extra/laptop_screen_on");
+
+    public static final ResourceLocation LIGHT_MODERN_EXTRA = ResourceLocation.fromNamespaceAndPath(
+            NhatJSNextGenFurnitureMod.MOD_ID, "extra/light_modern_extra");
 
     public static final StandaloneModelKey<BlockStateModel> LAPTOP_SCREEN_ID = new StandaloneModelKey<BlockStateModel>(LAPTOP_SCREEN::getPath);
     public static final StandaloneModelKey<BlockStateModel> LAPTOP_SCREEN_ON_ID = new StandaloneModelKey<BlockStateModel>(LAPTOP_SCREEN_ON::getPath);
+    public static final StandaloneModelKey<BlockStateModel> LIGHT_MODERN_EXTRA_ID = new StandaloneModelKey<BlockStateModel>(LIGHT_MODERN_EXTRA::getPath);
 
     private static void onClientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
@@ -103,6 +108,28 @@ public class NhatJSNextGenFurnitureModClient {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL_ALT.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MONITOR_DUAL_ALT_2.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_3_K_M_WOOD_OAK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_2_K_M_WOOD_OAK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_MODERN.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            BlockEntityRenderers.register(ModBlockEntities.LIGHT_EXTRA.get(), LightRenderer::new);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_1X1_WOOD_OAK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_1X1_WOOD_BIRCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_OAK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_OAK_ALT.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_OAK_ALT_2.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_BIRCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT_2.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_3X1_WOOD_OAK.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABLE_3X1_WOOD_BIRCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WASHING_MACHINE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
         });
     }
 }
