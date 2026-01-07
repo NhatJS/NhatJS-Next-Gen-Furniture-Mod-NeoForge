@@ -90,7 +90,10 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.COMPUTER_CPU.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.COMPUTER_FAN_BLADE_WHITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.COMPUTER_RAM_GAMING.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.DRAWER_WHITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModBlocks.LIGHT_MODERN.get().asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.NEXTGEN_FURNITURE_LOGO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SCREWDRIVER.get(), ModelTemplates.FLAT_ITEM);
 
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.AIO_COOLER_3_FANS.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.BED_GRAY_WOOD_BIRCH.get());
@@ -128,6 +131,14 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.COFFEE_TABLE_WHITE.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.COMPUTER_CASE_GAMING.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.COMPUTER_POWER_SUPPLY.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_2_K_M_WOOD_OAK.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_3_K_M_WOOD_OAK.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE.get());
 
         registerHorizontalWithBoolean(blockModels, ModBlocks.FLOOR_LAMP,
                 BlockStateProperties.HORIZONTAL_FACING, FloorLampBlock.LIT, floorLampOff, floorLampOn);
@@ -145,6 +156,9 @@ public class ModModelProvider extends ModelProvider {
 
         registerHorizontalWithBoolean(blockModels, ModBlocks.LAPTOP,
                 BlockStateProperties.HORIZONTAL_FACING, LaptopBlock.TURN_ON, laptop, laptopOn);
+
+        registerDirectionalWithBoolean(blockModels, ModBlocks.LIGHT_MODERN, BlockStateProperties.FACING,
+                ModernLightBlock.LIT, id("light_modern"), id("light_modern"));
 
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.MAINBOARD_GAMING.get());
 
@@ -183,14 +197,24 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_1X1_BLACK.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_1X1_WHITE.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_1X1_WOOD_OAK.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_1X1_WOOD_BIRCH.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_BLACK.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_BLACK_ALT.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_BLACK_ALT_2.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WHITE.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WHITE_ALT.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WHITE_ALT_2.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_OAK.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_OAK_ALT.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_OAK_ALT_2.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_BIRCH.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_2X1_WOOD_BIRCH_ALT_2.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_3X1_BLACK.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_3X1_WHITE.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_3X1_WOOD_OAK.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_3X1_WOOD_BIRCH.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_DINING_WHITE.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_DINING_WOOD_BIRCH.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.TABLE_DINING_WOOD_OAK.get());
@@ -214,6 +238,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.WARDROBE_MODERN_WOOD_BIRCH_RIGHT.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.WARDROBE_MODERN_WOOD_OAK_LEFT.get());
         blockModels.createNonTemplateHorizontalBlock(ModBlocks.WARDROBE_MODERN_WOOD_OAK_RIGHT.get());
+        blockModels.createNonTemplateHorizontalBlock(ModBlocks.WASHING_MACHINE.get());
     }
 
     //private void horizontalBlockWithCustomItem(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, ResourceLocation model) {
@@ -252,6 +277,26 @@ public class ModModelProvider extends ModelProvider {
         map.select(Direction.SOUTH, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)));
         map.select(Direction.WEST, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)));
         map.select(Direction.WEST, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)));
+
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block.get()).with(map));
+    }
+
+    public static void registerDirectionalWithBoolean(BlockModelGenerators blockModelGenerators, DeferredBlock<Block> block, EnumProperty<Direction> facing,
+                                                      BooleanProperty booleanProperty, ResourceLocation model, ResourceLocation modelBoolean) {
+        PropertyDispatch.C2<MultiVariant, Direction, Boolean> map = PropertyDispatch.C2.initial(facing, booleanProperty);
+
+        map.select(Direction.NORTH, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)));
+        map.select(Direction.NORTH, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)));
+        map.select(Direction.EAST, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)));
+        map.select(Direction.EAST, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)));
+        map.select(Direction.SOUTH, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)));
+        map.select(Direction.SOUTH, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)));
+        map.select(Direction.WEST, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)));
+        map.select(Direction.WEST, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)));
+        map.select(Direction.UP, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.X_ROT.withValue(Quadrant.R270)));
+        map.select(Direction.UP, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.X_ROT.withValue(Quadrant.R270)));
+        map.select(Direction.DOWN, Boolean.FALSE, BlockModelGenerators.plainVariant(model).with(VariantMutator.MODEL.withValue(model)).with(VariantMutator.X_ROT.withValue(Quadrant.R90)));
+        map.select(Direction.DOWN, Boolean.TRUE, BlockModelGenerators.plainVariant(modelBoolean).with(VariantMutator.MODEL.withValue(modelBoolean)).with(VariantMutator.X_ROT.withValue(Quadrant.R90)));
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block.get()).with(map));
     }

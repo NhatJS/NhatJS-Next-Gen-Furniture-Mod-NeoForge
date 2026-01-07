@@ -19,6 +19,10 @@ public class ModItems {
             Item::new, new Item.Properties());
     public static final DeferredItem<Item> COMPUTER_CPU = ITEMS.registerItem("computer_cpu",
             Item::new, new Item.Properties());
+    public static final DeferredItem<Item> SCREWDRIVER = ITEMS.registerItem("screwdriver",
+            Item::new, new Item.Properties());
+    public static final DeferredItem<Item> DRAWER_WHITE = ITEMS.registerItem("drawer_white",
+            Item::new, new Item.Properties());
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
