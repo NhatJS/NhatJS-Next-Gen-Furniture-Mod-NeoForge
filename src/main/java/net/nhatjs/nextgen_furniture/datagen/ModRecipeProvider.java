@@ -67,6 +67,7 @@ public class ModRecipeProvider extends RecipeProvider {
         //misc
         Item stick = Items.STICK;
         Item ingotIron = Items.IRON_INGOT;
+        Block blockIron = Blocks.IRON_BLOCK;
 
         //glass pane
         Block glassPaneStainedBlack = Blocks.BLACK_STAINED_GLASS_PANE;
@@ -84,6 +85,13 @@ public class ModRecipeProvider extends RecipeProvider {
         DeferredBlock<Block> keyboardMechanicalBlack = ModBlocks.KEYBOARD_MECHANICAL_BLACK;
         DeferredBlock<Block> mouseGamingBlack = ModBlocks.MOUSE_GAMING_BLACK;
         DeferredItem<Item> computerFanBladeWhite = ModItems.COMPUTER_FAN_BLADE_WHITE;
+        DeferredItem<Item> drawerWhite = ModItems.DRAWER_WHITE;
+        DeferredBlock<Block> drawer3KMWoodOakBase = ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE;
+        DeferredBlock<Block> drawer3KMWoodBirchBase = ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE;
+        DeferredBlock<Block> drawer2KMWoodOakBase = ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE;
+        DeferredBlock<Block> drawer2KMWoodBirchBase = ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE;
+        DeferredBlock<Block> table1x1WoodOak = ModBlocks.TABLE_1X1_WOOD_OAK;
+        DeferredBlock<Block> table1x1WoodBirch = ModBlocks.TABLE_1X1_WOOD_BIRCH;
 
         //others
         Block bedGray = Blocks.GRAY_BED;
@@ -292,6 +300,91 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_ingot", has(ingotIron))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModItems.DRAWER_WHITE, 3)
+                .pattern("1 1")
+                .pattern("111")
+                .define('1', concreteWhite)
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_2_K_M_WOOD_BIRCH_BASE, 2)
+                .pattern("111")
+                .pattern("2 2")
+                .pattern("222")
+                .define('1', planksBirch)
+                .define('2', concreteWhite)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_2_K_M_WOOD_BIRCH)
+                .pattern("1 ")
+                .pattern("12")
+                .define('1', drawerWhite)
+                .define('2', drawer2KMWoodBirchBase)
+                .unlockedBy("has_white_drawer", has(drawerWhite))
+                .unlockedBy("has_drawer2KMWoodBirchBase", has(drawer2KMWoodBirchBase))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_2_K_M_WOOD_OAK_BASE, 2)
+                .pattern("111")
+                .pattern("2 2")
+                .pattern("222")
+                .define('1', planksOak)
+                .define('2', concreteWhite)
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_2_K_M_WOOD_OAK)
+                .pattern("1 ")
+                .pattern("12")
+                .define('1', drawerWhite)
+                .define('2', drawer2KMWoodOakBase)
+                .unlockedBy("has_white_drawer", has(drawerWhite))
+                .unlockedBy("has_drawer2KMWoodOakBase", has(drawer2KMWoodOakBase))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_3_K_M_WOOD_BIRCH_BASE, 2)
+                .pattern("111")
+                .pattern("222")
+                .pattern("222")
+                .define('1', planksBirch)
+                .define('2', concreteWhite)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_3_K_M_WOOD_BIRCH)
+                .pattern("1 ")
+                .pattern("12")
+                .pattern("1 ")
+                .define('1', drawerWhite)
+                .define('2', drawer3KMWoodBirchBase)
+                .unlockedBy("has_white_drawer", has(drawerWhite))
+                .unlockedBy("has_drawer3KMWoodBirchBase", has(drawer3KMWoodBirchBase))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_3_K_M_WOOD_OAK_BASE, 2)
+                .pattern("111")
+                .pattern("222")
+                .pattern("222")
+                .define('1', planksOak)
+                .define('2', concreteWhite)
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .unlockedBy("has_white_concrete", has(concreteWhite))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DRAWER_3_K_M_WOOD_OAK)
+                .pattern("1 ")
+                .pattern("12")
+                .pattern("1 ")
+                .define('1', drawerWhite)
+                .define('2', drawer3KMWoodOakBase)
+                .unlockedBy("has_white_drawer", has(drawerWhite))
+                .unlockedBy("has_drawer3KMWoodOakBase", has(drawer3KMWoodOakBase))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.FLOOR_LAMP)
                 .pattern(" 2 ")
                 .pattern(" 1 ")
@@ -397,6 +490,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_button", has(buttonStone))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.LIGHT_MODERN, 2)
+                .pattern(" 1 ")
+                .pattern("121")
+                .pattern(" 1 ")
+                .define('1', ingotIron)
+                .define('2', redstoneLamp)
+                .unlockedBy("has_iron_ingot", has(ingotIron))
+                .unlockedBy("has_redstone_lamp", has(redstoneLamp))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.MAINBOARD_GAMING)
                 .pattern("311")
                 .pattern("321")
@@ -469,6 +572,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_painting", has(painting))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModItems.SCREWDRIVER)
+                .pattern("1  ")
+                .pattern(" 12")
+                .pattern(" 21")
+                .define('1', ingotIron)
+                .define('2', dyeBlack)
+                .unlockedBy("has_iron_ingot", has(ingotIron))
+                .unlockedBy("has_black_dye", has(dyeBlack))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.SOFA_GRAY, 2)
                 .pattern("111")
                 .pattern("111")
@@ -501,6 +614,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stick", has(stick))
                 .save(output);
 
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_1X1_WOOD_BIRCH, 2)
+                .pattern("11")
+                .pattern("22")
+                .define('1', planksBirch)
+                .define('2', stick)
+                .unlockedBy("has_birch_planks", has(planksBirch))
+                .unlockedBy("has_stick", has(stick))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_1X1_WOOD_OAK, 2)
+                .pattern("11")
+                .pattern("22")
+                .define('1', planksOak)
+                .define('2', stick)
+                .unlockedBy("has_oak_planks", has(planksOak))
+                .unlockedBy("has_stick", has(stick))
+                .save(output);
+
         shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_2X1_BLACK)
                 .pattern("11")
                 .define('1', table1x1Black)
@@ -511,6 +642,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("11")
                 .define('1', table1x1White)
                 .unlockedBy("has_white_1x1_table", has(table1x1White))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_2X1_WOOD_BIRCH)
+                .pattern("11")
+                .define('1', table1x1WoodBirch)
+                .unlockedBy("has_birch_wood_1x1_table", has(table1x1WoodBirch))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_2X1_WOOD_OAK)
+                .pattern("11")
+                .define('1', table1x1WoodOak)
+                .unlockedBy("has_oak_wood_1x1_table", has(table1x1WoodOak))
                 .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.TABLE_DINING_WHITE, 2)
@@ -634,6 +777,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_oak_planks", has(planksOak))
                 .unlockedBy("has_chest", has(chest))
                 .unlockedBy("has_black_concrete", has(concreteBlack))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.WASHING_MACHINE)
+                .pattern("121")
+                .pattern("434")
+                .pattern("141")
+                .define('1', concreteBlack)
+                .define('2', buttonStone)
+                .define('3', blockIron)
+                .define('4', redstone)
+                .unlockedBy("has_black_concrete", has(concreteBlack))
+                .unlockedBy("has_stone_button", has(buttonStone))
+                .unlockedBy("has_iron_block", has(blockIron))
+                .unlockedBy("has_redstone", has(redstone))
                 .save(output);
     }
 }
